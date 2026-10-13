@@ -38,20 +38,91 @@ const AVATAR =
   "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80";
 
 const DEFAULT_GRADES = [
-  { id: 1, subject: "Геометрия", kind: "Текущая", date: "ОТВ, ЗА 13 ОКТ.", score: "6", dot: true },
-  { id: 2, subject: "НДП", kind: "Важная", date: "СОР, за 5 окт.", score: "1/50", dot: true },
-  { id: 3, subject: "История Узбекистана", kind: "Текущая", date: "ОТВ, ЗА 13 ОКТ.", score: "3", dot: true },
-  { id: 4, subject: "География", kind: "Текущая", date: "ОТВ, ЗА 8 ОКТ.", score: "10", dot: false },
+  {
+    id: 1,
+    subject: "Геометрия",
+    kind: "Текущая",
+    date: "ОТВ, ЗА 13 ОКТ.",
+    score: "6",
+    dot: true,
+  },
+  {
+    id: 2,
+    subject: "НДП",
+    kind: "Важная",
+    date: "СОР, за 5 окт.",
+    score: "1/50",
+    dot: true,
+  },
+  {
+    id: 3,
+    subject: "История Узбекистана",
+    kind: "Текущая",
+    date: "ОТВ, ЗА 13 ОКТ.",
+    score: "3",
+    dot: true,
+  },
+  {
+    id: 4,
+    subject: "География",
+    kind: "Текущая",
+    date: "ОТВ, ЗА 8 ОКТ.",
+    score: "10",
+    dot: false,
+  },
 ];
 
 const DEFAULT_SCHEDULE = [
-  { id: 1, time: "8:00-8:45", subject: "1. ОГП", homework: "Параграф 7, ответить на вопросы", done: false },
-  { id: 2, time: "8:50-9:35", subject: "2. Всемирная история", homework: "Прочитать §5, составить план", done: false },
-  { id: 3, time: "9:40-10:25", subject: "3. НДП", homework: "Упражнения 12–15", done: false },
-  { id: 4, time: "10:40-11:25", subject: "4. Воспитание", homework: "Подготовить сообщение", done: false },
-  { id: 5, time: "11:30-12:15", subject: "5. Информатика", homework: "Практическая работа №3", done: false },
-  { id: 6, time: "12:20-13:05", subject: "6. Узбекский язык", homework: "Выучить новые слова", done: false },
-  { id: 7, time: "13:10-13:55", subject: "7. Алгебра", homework: "Стр. 48, № 214–218", done: false },
+  {
+    id: 1,
+    time: "8:00-8:45",
+    subject: "1. ОГП",
+    homework: "Параграф 7, ответить на вопросы",
+    done: false,
+  },
+  {
+    id: 2,
+    time: "8:50-9:35",
+    subject: "2. Всемирная история",
+    homework: "Прочитать §5, составить план",
+    done: false,
+  },
+  {
+    id: 3,
+    time: "9:40-10:25",
+    subject: "3. НДП",
+    homework: "Упражнения 12–15",
+    done: false,
+  },
+  {
+    id: 4,
+    time: "10:40-11:25",
+    subject: "4. Воспитание",
+    homework: "Подготовить сообщение",
+    done: false,
+  },
+  {
+    id: 5,
+    time: "11:30-12:15",
+    subject: "5. Информатика",
+    homework: "Практическая работа №3",
+    done: false,
+  },
+  {
+    id: 6,
+    time: "12:20-13:05",
+    subject: "6. Узбекский язык",
+    homework: "Выучить новые слова",
+    done: false,
+  },
+  {
+    id: 7,
+    time: "13:10-13:55",
+    subject: "7. Алгебра",
+    homework: "Стр. 48, № 214–218",
+    grade: "5",
+    done: false,
+  },
 ];
 
 const DEFAULT_CHATS = [
@@ -62,7 +133,12 @@ const DEFAULT_CHATS = [
     color: "#8b5cf6",
     unread: 2,
     messages: [
-      { me: false, who: "Madina", text: "Ребята, кто сделал ДЗ по алгебре?", t: "18:02" },
+      {
+        me: false,
+        who: "Madina",
+        text: "Ребята, кто сделал ДЗ по алгебре?",
+        t: "18:02",
+      },
       { me: false, who: "Sardor", text: "Я, стр. 48 всё", t: "18:05" },
     ],
   },
@@ -73,7 +149,12 @@ const DEFAULT_CHATS = [
     color: "#f97316",
     unread: 1,
     messages: [
-      { me: false, who: "Классный руководитель", text: "Напоминаю: родительское собрание в пятницу в 18:00.", t: "12:40" },
+      {
+        me: false,
+        who: "Классный руководитель",
+        text: "Напоминаю: родительское собрание в пятницу в 18:00.",
+        t: "12:40",
+      },
     ],
   },
   {
@@ -83,7 +164,12 @@ const DEFAULT_CHATS = [
     color: "#22c55e",
     unread: 0,
     messages: [
-      { me: false, who: "Учитель математики", text: "Контрольная перенесена на следующую неделю.", t: "вчера" },
+      {
+        me: false,
+        who: "Учитель математики",
+        text: "Контрольная перенесена на следующую неделю.",
+        t: "вчера",
+      },
       { me: true, text: "Хорошо, спасибо!", t: "вчера" },
     ],
   },
@@ -93,20 +179,49 @@ const DEFAULT_CHATS = [
     sub: "Добро пожаловать!",
     color: "#3b82f6",
     unread: 0,
-    messages: [{ me: false, who: "emaktab", text: "Добро пожаловать в emaktab!", t: "12 окт." }],
+    messages: [
+      {
+        me: false,
+        who: "emaktab",
+        text: "Добро пожаловать в emaktab!",
+        t: "12 окт.",
+      },
+    ],
   },
 ];
 
 const SUBJECTS = [
-  "ОГП", "Всемирная история", "НДП", "Воспитание", "Информатика", "Узбекский язык",
-  "Алгебра", "Геометрия", "История Узбекистана", "География", "Химия", "Физика",
-  "Биология", "Русский язык", "Литература", "Англ. язык", "Математика",
-  "Физкультура", "Музыка", "ИЗО", "Технология",
+  "ОГП",
+  "Всемирная история",
+  "НДП",
+  "Воспитание",
+  "Информатика",
+  "Узбекский язык",
+  "Алгебра",
+  "Геометрия",
+  "История Узбекистана",
+  "География",
+  "Химия",
+  "Физика",
+  "Биология",
+  "Русский язык",
+  "Литература",
+  "Англ. язык",
+  "Математика",
+  "Физкультура",
+  "Музыка",
+  "ИЗО",
+  "Технология",
 ];
 
 const TIMES = [
-  "8:00-8:45", "8:50-9:35", "9:40-10:25", "10:40-11:25",
-  "11:30-12:15", "12:20-13:05", "13:10-13:55",
+  "8:00-8:45",
+  "8:50-9:35",
+  "9:40-10:25",
+  "10:40-11:25",
+  "11:30-12:15",
+  "12:20-13:05",
+  "13:10-13:55",
 ];
 const mkDay = (d, list) =>
   list.map(([name, homework], i) => ({
@@ -175,7 +290,20 @@ const DEFAULT_WEEK = {
 };
 
 const WD = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
-const MON = ["янв.", "февр.", "мар.", "апр.", "мая", "июн.", "июл.", "авг.", "сент.", "окт.", "нояб.", "дек."];
+const MON = [
+  "янв.",
+  "февр.",
+  "мар.",
+  "апр.",
+  "мая",
+  "июн.",
+  "июл.",
+  "авг.",
+  "сент.",
+  "окт.",
+  "нояб.",
+  "дек.",
+];
 const WD_CHIPS = [
   { n: 1, l: "Пн" },
   { n: 2, l: "Вт" },
@@ -184,7 +312,8 @@ const WD_CHIPS = [
   { n: 5, l: "Пт" },
   { n: 6, l: "Сб" },
 ];
-const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const addDays = (d, n) =>
+  new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
 const dateKey = (d) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 const HOLIDAYS = {
   "1-1": "Новый год",
@@ -249,28 +378,63 @@ const Dot = ({ color = BLUE, style }) => (
 const Tree = () => (
   <svg width="150" height="130" viewBox="0 0 150 130" fill="none">
     <ellipse cx="75" cy="106" rx="68" ry="20" fill="#4e9a1f" />
-    <path d="M70 100 L72 60 M72 78 L60 62 M73 72 L84 54" stroke="#7a5a45" strokeWidth="2" strokeLinecap="round" />
+    <path
+      d="M70 100 L72 60 M72 78 L60 62 M73 72 L84 54"
+      stroke="#7a5a45"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
     <path
       d="M60 74 C44 70 46 50 58 46 C54 28 66 12 78 14 C92 16 96 34 92 46 C106 52 102 74 86 74 Z"
       fill="#8fb581"
     />
-    <path d="M72 100 L72 70" stroke="#7a5a45" strokeWidth="2" strokeLinecap="round" />
-    <path d="M72 80 L60 64 M73 74 L85 56" stroke="#7a5a45" strokeWidth="2" strokeLinecap="round" />
+    <path
+      d="M72 100 L72 70"
+      stroke="#7a5a45"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M72 80 L60 64 M73 74 L85 56"
+      stroke="#7a5a45"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
 const THEMES = {
   dark: {
-    "--s0": "#0d0e12", "--s1": "#1b1b1e", "--s2": "#18181b", "--s3": "#23252b",
-    "--s4": "#33363f", "--s5": "#3a3d45", "--line": "#34363d", "--fg": "#ffffff",
-    "--mut": "#c3c6cf", "--mut2": "#9aa0b4", "--nav": "rgba(30,30,34,0.95)",
-    "--navact": "#33353b", "--outer": "#05080f", "--bub": "rgba(255,255,255,0.12)",
+    "--s0": "#0d0e12",
+    "--s1": "#1b1b1e",
+    "--s2": "#18181b",
+    "--s3": "#23252b",
+    "--s4": "#33363f",
+    "--s5": "#3a3d45",
+    "--line": "#34363d",
+    "--fg": "#ffffff",
+    "--mut": "#c3c6cf",
+    "--mut2": "#9aa0b4",
+    "--nav": "rgba(30,30,34,0.95)",
+    "--navact": "#33353b",
+    "--outer": "#05080f",
+    "--bub": "rgba(255,255,255,0.12)",
   },
   light: {
-    "--s0": "#eef1f7", "--s1": "#e8ebf3", "--s2": "#ffffff", "--s3": "#ffffff",
-    "--s4": "#e6eaf4", "--s5": "#d5dae6", "--line": "#ccd2e0", "--fg": "#151821",
-    "--mut": "#4f566a", "--mut2": "#6b7385", "--nav": "rgba(255,255,255,0.96)",
-    "--navact": "#e1e6f2", "--outer": "#dfe3ec", "--bub": "#e3e7f1",
+    "--s0": "#eef1f7",
+    "--s1": "#e8ebf3",
+    "--s2": "#ffffff",
+    "--s3": "#ffffff",
+    "--s4": "#e6eaf4",
+    "--s5": "#d5dae6",
+    "--line": "#ccd2e0",
+    "--fg": "#151821",
+    "--mut": "#4f566a",
+    "--mut2": "#6b7385",
+    "--nav": "rgba(255,255,255,0.96)",
+    "--navact": "#e1e6f2",
+    "--outer": "#dfe3ec",
+    "--bub": "#e3e7f1",
   },
 };
 
@@ -326,7 +490,12 @@ export default function App() {
   const [loadedFor, setLoadedFor] = useState(null);
   const [authMode, setAuthMode] = useState("login");
   const [authErr, setAuthErr] = useState("");
-  const [form, setForm] = useState({ login: "", pass: "", fullName: "", className: "" });
+  const [form, setForm] = useState({
+    login: "",
+    pass: "",
+    fullName: "",
+    className: "",
+  });
 
   useEffect(() => {
     const t = setTimeout(() => setIsLoading(false), 3800);
@@ -373,7 +542,8 @@ export default function App() {
   useEffect(() => {
     if (!user || loadedFor !== user) return;
     try {
-      const put = (k, v) => localStorage.setItem(`emaktab_${user}_${k}`, JSON.stringify(v));
+      const put = (k, v) =>
+        localStorage.setItem(`emaktab_${user}_${k}`, JSON.stringify(v));
       put("profile", profile);
       put("grades", grades);
       put("week", week);
@@ -417,7 +587,8 @@ export default function App() {
   useEffect(() => {
     if (tab !== "diary") return;
     const t = setTimeout(
-      () => todayRef.current?.scrollIntoView({ behavior: "auto", block: "start" }),
+      () =>
+        todayRef.current?.scrollIntoView({ behavior: "auto", block: "start" }),
       60,
     );
     const on = () => {
@@ -489,7 +660,8 @@ export default function App() {
   };
 
   const logout = () => {
-    if (!window.confirm("Выйти из аккаунта? Данные сохранены, войдите снова.")) return;
+    if (!window.confirm("Выйти из аккаунта? Данные сохранены, войдите снова."))
+      return;
     try {
       localStorage.removeItem("emaktab_session");
     } catch (e) {}
@@ -502,7 +674,12 @@ export default function App() {
     setWeek(DEFAULT_WEEK);
     setHwDone({});
     setChats(DEFAULT_CHATS);
-    setSettings({ notify: true, hwRemind: true, lang: "Русский", light: false });
+    setSettings({
+      notify: true,
+      hwRemind: true,
+      lang: "Русский",
+      light: false,
+    });
   };
 
   const pickPhoto = (e) => {
@@ -518,7 +695,17 @@ export default function App() {
         c.width = S;
         c.height = S;
         const m = Math.min(img.width, img.height);
-        c.getContext("2d").drawImage(img, (img.width - m) / 2, (img.height - m) / 2, m, m, 0, 0, S, S);
+        c.getContext("2d").drawImage(
+          img,
+          (img.width - m) / 2,
+          (img.height - m) / 2,
+          m,
+          m,
+          0,
+          0,
+          S,
+          S,
+        );
         setProfile((p) => ({ ...p, avatar: c.toDataURL("image/jpeg", 0.85) }));
       };
       img.src = r.result;
@@ -534,7 +721,12 @@ export default function App() {
     setChats((cs) =>
       cs.map((c) =>
         c.id === openChat
-          ? { ...c, unread: 0, sub: text, messages: [...c.messages, { me: true, text, t }] }
+          ? {
+              ...c,
+              unread: 0,
+              sub: text,
+              messages: [...c.messages, { me: true, text, t }],
+            }
           : c,
       ),
     );
@@ -573,7 +765,14 @@ export default function App() {
           @keyframes msgSwap { 0% { opacity: 0; transform: translateY(8px); } 15%,85% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-6px); } }
           @keyframes dotBounce { 0%,80%,100% { transform: scale(.5); opacity: .4; } 40% { transform: scale(1); opacity: 1; } }
         `}</style>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, animation: "logoIn .8s ease both" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            animation: "logoIn .8s ease both",
+          }}
+        >
           <svg width="92" height="96" viewBox="0 0 92 96" fill="none">
             {rays.map((deg, i) => (
               <line
@@ -586,7 +785,9 @@ export default function App() {
                 strokeWidth="3.4"
                 strokeLinecap="round"
                 transform={`rotate(${deg} 46 34)`}
-                style={{ animation: `rayPulse 1.6s ${i * 0.12}s ease-in-out infinite` }}
+                style={{
+                  animation: `rayPulse 1.6s ${i * 0.12}s ease-in-out infinite`,
+                }}
               />
             ))}
             <path
@@ -617,7 +818,8 @@ export default function App() {
           </svg>
           <div
             style={{
-              fontFamily: '"Baloo 2","Fredoka","Nunito","Arial Rounded MT Bold","Trebuchet MS",sans-serif',
+              fontFamily:
+                '"Baloo 2","Fredoka","Nunito","Arial Rounded MT Bold","Trebuchet MS",sans-serif',
               fontSize: 62,
               fontWeight: 700,
               letterSpacing: 1,
@@ -628,7 +830,10 @@ export default function App() {
             {"maktab".split("").map((ch, i) => (
               <span
                 key={i}
-                style={{ display: "inline-block", animation: `letterIn .5s ${0.25 + i * 0.09}s ease both` }}
+                style={{
+                  display: "inline-block",
+                  animation: `letterIn .5s ${0.25 + i * 0.09}s ease both`,
+                }}
               >
                 {ch}
               </span>
@@ -732,10 +937,18 @@ export default function App() {
               pointerEvents: "none",
             }}
           >
-            <path d="M0 232 Q90 196 180 206 Q300 222 420 244 L420 324 L0 324 Z" fill="#1d3a10" />
+            <path
+              d="M0 232 Q90 196 180 206 Q300 222 420 244 L420 324 L0 324 Z"
+              fill="#1d3a10"
+            />
             {/* дерево */}
             <ellipse cx="22" cy="96" rx="62" ry="84" fill="#3c4a22" />
-            <path d="M22 24 L27 228" stroke="#2f3a18" strokeWidth="5" strokeLinecap="round" />
+            <path
+              d="M22 24 L27 228"
+              stroke="#2f3a18"
+              strokeWidth="5"
+              strokeLinecap="round"
+            />
             <path
               d="M22 130 L-4 68 M24 160 L72 92 M22 190 L-10 150 M25 194 L64 150"
               stroke="#2f3a18"
@@ -743,37 +956,85 @@ export default function App() {
               strokeLinecap="round"
             />
             <ellipse cx="29" cy="232" rx="17" ry="4" fill="#2a3512" />
-            <path d="M0 282 Q90 250 200 262 Q320 276 420 262 L420 324 L0 324 Z" fill="#38572a" />
+            <path
+              d="M0 282 Q90 250 200 262 Q320 276 420 262 L420 324 L0 324 Z"
+              fill="#38572a"
+            />
 
             {/* стоящая девушка */}
-            <path d="M172 196 L202 196 L210 280 L198 281 L188 224 L182 284 L169 284 Z" fill="#5577d4" />
+            <path
+              d="M172 196 L202 196 L210 280 L198 281 L188 224 L182 284 L169 284 Z"
+              fill="#5577d4"
+            />
             <ellipse cx="174" cy="288" rx="10" ry="3" fill="#2d2020" />
             <ellipse cx="204" cy="285" rx="10" ry="3" fill="#2d2020" />
-            <path d="M172 134 Q172 112 190 112 Q206 114 205 134 Q205 152 196 160 L174 160 Q168 148 172 134 Z" fill="#8a5a3c" />
-            <path d="M163 166 Q168 154 186 152 Q206 154 212 168 L208 200 Q186 208 168 200 Z" fill="#a3402f" />
-            <path d="M166 172 Q158 190 160 200 Q166 204 172 198 Z" fill={skin} />
+            <path
+              d="M172 134 Q172 112 190 112 Q206 114 205 134 Q205 152 196 160 L174 160 Q168 148 172 134 Z"
+              fill="#8a5a3c"
+            />
+            <path
+              d="M163 166 Q168 154 186 152 Q206 154 212 168 L208 200 Q186 208 168 200 Z"
+              fill="#a3402f"
+            />
+            <path
+              d="M166 172 Q158 190 160 200 Q166 204 172 198 Z"
+              fill={skin}
+            />
             <ellipse cx="190" cy="136" rx="10" ry="12" fill={skin} />
-            <rect x="187" y="162" width="32" height="27" rx="4" fill="#2f3558" transform="rotate(-6 203 175)" />
+            <rect
+              x="187"
+              y="162"
+              width="32"
+              height="27"
+              rx="4"
+              fill="#2f3558"
+              transform="rotate(-6 203 175)"
+            />
             <circle cx="206" cy="193" r="5" fill={skin} />
 
             {/* сидящая девушка */}
-            <path d="M288 270 L322 282 L336 280 L338 285 L318 288 L290 281 Z" fill={skin} />
+            <path
+              d="M288 270 L322 282 L336 280 L338 285 L318 288 L290 281 Z"
+              fill={skin}
+            />
             <ellipse cx="337" cy="285" rx="6" ry="2.5" fill="#2d2020" />
-            <path d="M246 262 Q250 284 270 285 Q290 284 292 262 Z" fill="#5b6b84" />
-            <path d="M258 188 Q260 178 270 178 Q282 180 282 192 L284 232 L258 232 Z" fill="#6b4228" />
-            <path d="M246 234 Q250 220 270 220 Q292 222 296 236 L292 264 L250 264 Z" fill="#c9a13a" />
+            <path
+              d="M246 262 Q250 284 270 285 Q290 284 292 262 Z"
+              fill="#5b6b84"
+            />
+            <path
+              d="M258 188 Q260 178 270 178 Q282 180 282 192 L284 232 L258 232 Z"
+              fill="#6b4228"
+            />
+            <path
+              d="M246 234 Q250 220 270 220 Q292 222 296 236 L292 264 L250 264 Z"
+              fill="#c9a13a"
+            />
             <path d="M262 224 L280 224 L278 262 L264 262 Z" fill="#efefef" />
             <ellipse cx="270" cy="192" rx="9" ry="11" fill={skin} />
             <rect x="266" y="242" width="7" height="14" rx="2" fill="#3a2418" />
 
             {/* сидящий парень */}
-            <path d="M356 262 L392 262 L394 296 L384 298 L374 280 L350 286 L326 280 L330 270 Z" fill="#4a6ad0" />
+            <path
+              d="M356 262 L392 262 L394 296 L384 298 L374 280 L350 286 L326 280 L330 270 Z"
+              fill="#4a6ad0"
+            />
             <ellipse cx="327" cy="283" rx="7" ry="3" fill="#4a2c1c" />
             <ellipse cx="382" cy="301" rx="8" ry="3" fill="#4a2c1c" />
-            <path d="M348 232 Q360 222 380 228 L396 262 L352 262 Z" fill="#eeeeee" />
-            <path d="M358 232 L356 262 M385 232 L388 258" stroke="#3a2418" strokeWidth="3" />
+            <path
+              d="M348 232 Q360 222 380 228 L396 262 L352 262 Z"
+              fill="#eeeeee"
+            />
+            <path
+              d="M358 232 L356 262 M385 232 L388 258"
+              stroke="#3a2418"
+              strokeWidth="3"
+            />
             <ellipse cx="366" cy="212" rx="9" ry="11" fill={skin} />
-            <path d="M356 210 Q358 196 372 198 Q381 202 377 212 Q368 204 358 214 Z" fill="#3a2417" />
+            <path
+              d="M356 210 Q358 196 372 198 Q381 202 377 212 Q368 204 358 214 Z"
+              fill="#3a2417"
+            />
             <ellipse cx="338" cy="270" rx="5" ry="4" fill="#5a3a28" />
           </svg>
 
@@ -892,7 +1153,14 @@ export default function App() {
               />
 
               {authErr && (
-                <div style={{ color: "#ff7b7b", fontSize: 14, textAlign: "center", marginTop: 14 }}>
+                <div
+                  style={{
+                    color: "#ff7b7b",
+                    fontSize: 14,
+                    textAlign: "center",
+                    marginTop: 14,
+                  }}
+                >
                   {authErr}
                 </div>
               )}
@@ -983,7 +1251,11 @@ export default function App() {
   }
   /* ---------- общие куски ---------- */
   const realToday = new Date();
-  const realTodayD = new Date(realToday.getFullYear(), realToday.getMonth(), realToday.getDate());
+  const realTodayD = new Date(
+    realToday.getFullYear(),
+    realToday.getMonth(),
+    realToday.getDate(),
+  );
   const anchor = realTodayD;
   const isRealToday = anchor.getTime() === realTodayD.getTime();
   const todayInfo = dayInfo(anchor);
@@ -991,15 +1263,22 @@ export default function App() {
   const todayHw = todayLessons.filter((l) => l.homework);
   const lkey = (d, l) => `${dateKey(d)}|${l.id}`;
   const isDoneL = (d, l) => !!hwDone[lkey(d, l)];
-  const toggleL = (d, l) => setHwDone((h) => ({ ...h, [lkey(d, l)]: !h[lkey(d, l)] }));
+  const toggleL = (d, l) =>
+    setHwDone((h) => ({ ...h, [lkey(d, l)]: !h[lkey(d, l)] }));
   const doneCount = todayHw.filter((l) => isDoneL(anchor, l)).length;
-  const numericGrades = grades.map((g) => toTen(g.score)).filter((n) => !isNaN(n));
+  const numericGrades = grades
+    .map((g) => toTen(g.score))
+    .filter((n) => !isNaN(n));
   const avg = numericGrades.length
-    ? (numericGrades.reduce((a, b) => a + b, 0) / numericGrades.length).toFixed(1)
+    ? (numericGrades.reduce((a, b) => a + b, 0) / numericGrades.length).toFixed(
+        1,
+      )
     : "—";
 
   const hasPhoto = !!profile.avatar && profile.avatar !== AVATAR;
-  const initial = ((profile.name || profile.fullName || user || "?").trim()[0] || "?").toUpperCase();
+  const initial = (
+    (profile.name || profile.fullName || user || "?").trim()[0] || "?"
+  ).toUpperCase();
   const avatarImg = (size) =>
     hasPhoto ? (
       <img
@@ -1037,11 +1316,25 @@ export default function App() {
     );
   const light = !!settings.light;
 
-  const glass = { background: "rgba(255,255,255,0.1)", borderRadius: 20, padding: 16 };
-  const outlined = { border: "1.5px solid rgba(160,175,255,0.45)", borderRadius: 24 };
+  const glass = {
+    background: "rgba(255,255,255,0.1)",
+    borderRadius: 20,
+    padding: 16,
+  };
+  const outlined = {
+    border: "1.5px solid rgba(160,175,255,0.45)",
+    borderRadius: 24,
+  };
 
   const Sub = ({ title, back = "home", right }) => (
-    <div style={{ display: "flex", alignItems: "center", gap: 8, margin: "4px 0 16px" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        margin: "4px 0 16px",
+      }}
+    >
       <button
         onClick={() => setTab(back)}
         style={{
@@ -1059,7 +1352,9 @@ export default function App() {
       >
         <ChevronLeft size={22} />
       </button>
-      <h2 style={{ fontSize: 24, fontWeight: 800, margin: 0, flex: 1 }}>{title}</h2>
+      <h2 style={{ fontSize: 24, fontWeight: 800, margin: 0, flex: 1 }}>
+        {title}
+      </h2>
       {right}
     </div>
   );
@@ -1074,7 +1369,9 @@ export default function App() {
   const isTop = ratingStep === 1;
 
   const ratingRows = (
-    <div style={{ position: "relative", height: RATING_ROW_H * 3, marginTop: 6 }}>
+    <div
+      style={{ position: "relative", height: RATING_ROW_H * 3, marginTop: 6 }}
+    >
       {ratingData.map((r) => {
         const rank = (isTop ? ORDER_AFTER : ORDER_BEFORE)[r.id];
         const me = !!r.me;
@@ -1204,17 +1501,56 @@ export default function App() {
       }}
     >
       <div style={{ width: 105, height: 91 }}>
-        <div style={{ transform: "scale(0.7)", transformOrigin: "top left", width: 150, height: 130 }}>
+        <div
+          style={{
+            transform: "scale(0.7)",
+            transformOrigin: "top left",
+            width: 150,
+            height: 130,
+          }}
+        >
           <Tree />
         </div>
       </div>
-      <div style={{ fontSize: 17, fontWeight: 700, marginTop: 16 }}>Нет уроков</div>
-      <div style={{ fontSize: 13.5, color: "var(--mut)", marginTop: 8, lineHeight: 1.35 }}>
+      <div style={{ fontSize: 17, fontWeight: 700, marginTop: 16 }}>
+        Нет уроков
+      </div>
+      <div
+        style={{
+          fontSize: 13.5,
+          color: "var(--mut)",
+          marginTop: 8,
+          lineHeight: 1.35,
+        }}
+      >
         {info && info.holiday ? `${info.title}. ` : ""}
         Отличный день, чтобы отдохнуть!
       </div>
     </div>
   );
+
+  /* ---------- зелёная плашка с оценкой за урок ---------- */
+  const gradeTile = (g) =>
+    g ? (
+      <div
+        style={{
+          minWidth: 30,
+          height: 30,
+          padding: "0 6px",
+          borderRadius: 9,
+          background: "#22c55e",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontWeight: 900,
+          fontSize: 16,
+          boxSizing: "border-box",
+        }}
+      >
+        {g}
+      </div>
+    ) : null;
 
   /* ---------- карточка урока ---------- */
   const lessonCard = (item, d = anchor) => {
@@ -1244,12 +1580,24 @@ export default function App() {
           }}
         >
           <div>
-            <div style={{ fontSize: 14.5, fontWeight: 800, lineHeight: 1.2 }}>{item.subject}</div>
-            <div style={{ fontSize: 12.5, color: "var(--mut)", marginTop: 1, lineHeight: 1.2 }}>
+            <div style={{ fontSize: 14.5, fontWeight: 800, lineHeight: 1.2 }}>
+              {item.subject}
+            </div>
+            <div
+              style={{
+                fontSize: 12.5,
+                color: "var(--mut)",
+                marginTop: 1,
+                lineHeight: 1.2,
+              }}
+            >
               {item.time}
             </div>
           </div>
-          <ChevronRight size={18} color={BLUE} />
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            {gradeTile(item.grade)}
+            <ChevronRight size={18} color={BLUE} />
+          </div>
         </div>
         {item.homework && (
           <div
@@ -1265,7 +1613,9 @@ export default function App() {
               boxSizing: "border-box",
             }}
           >
-            <span style={{ fontSize: 12.5, color: "#dbe3f2" }}>Есть домашнее задание</span>
+            <span style={{ fontSize: 12.5, color: "#dbe3f2" }}>
+              Есть домашнее задание
+            </span>
             <button
               onClick={() => toggleL(d, item)}
               style={{
@@ -1320,7 +1670,14 @@ export default function App() {
           </div>
           {!empty && (
             <>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 7 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginTop: 7,
+                }}
+              >
                 <div
                   style={{
                     width: 17,
@@ -1336,7 +1693,13 @@ export default function App() {
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 600 }}>
                   {done}/{withHw.length}{" "}
-                  <span style={{ fontSize: 11.5, color: "var(--mut)", fontWeight: 400 }}>
+                  <span
+                    style={{
+                      fontSize: 11.5,
+                      color: "var(--mut)",
+                      fontWeight: 400,
+                    }}
+                  >
                     ДЗ на {isToday ? "сегодня" : "день"}
                   </span>
                 </span>
@@ -1346,7 +1709,12 @@ export default function App() {
                   style={{ cursor: "pointer" }}
                   onClick={() =>
                     navigator.clipboard?.writeText(
-                      lessons.map((x) => `${x.subject} (${x.time}): ${x.homework || "-"}`).join("\n"),
+                      lessons
+                        .map(
+                          (x) =>
+                            `${x.subject} (${x.time}): ${x.homework || "-"}`,
+                        )
+                        .join("\n"),
                     )
                   }
                 />
@@ -1389,7 +1757,10 @@ export default function App() {
   const slide = (dir) => {
     const el = carRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * (el.clientWidth * 0.9 + 11), behavior: "smooth" });
+    el.scrollBy({
+      left: dir * (el.clientWidth * 0.9 + 11),
+      behavior: "smooth",
+    });
   };
 
   /* ---------- ГЛАВНАЯ ---------- */
@@ -1415,13 +1786,23 @@ export default function App() {
               alignItems: "center",
             }}
           >
-            <span style={{ fontSize: 13.5, fontWeight: 700 }}>Рейтинг в классе</span>
+            <span style={{ fontSize: 13.5, fontWeight: 700 }}>
+              Рейтинг в классе
+            </span>
             <ChevronRight size={15} color="#fff" />
           </div>
           {ratingRows}
         </div>
 
-        <div style={{ width: 74, display: "flex", flexDirection: "column", gap: 6, flexShrink: 0 }}>
+        <div
+          style={{
+            width: 74,
+            display: "flex",
+            flexDirection: "column",
+            gap: 6,
+            flexShrink: 0,
+          }}
+        >
           <div
             onClick={() => {
               setChatSeg("events");
@@ -1439,7 +1820,16 @@ export default function App() {
             <div style={{ marginLeft: 4 }}>
               <Bell size={20} color="#fff" strokeWidth={1.6} />
             </div>
-            <div style={{ fontSize: 12, fontWeight: 700, marginTop: 7, whiteSpace: "nowrap" }}>События</div>
+            <div
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                marginTop: 7,
+                whiteSpace: "nowrap",
+              }}
+            >
+              События
+            </div>
           </div>
           <div
             style={{
@@ -1476,9 +1866,19 @@ export default function App() {
             </div>
             <svg
               viewBox="0 0 100 90"
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+              }}
             >
-              <path d="M0 55 Q30 45 50 60 T100 50" stroke="#3a4bc0" strokeWidth="3" fill="none" />
+              <path
+                d="M0 55 Q30 45 50 60 T100 50"
+                stroke="#3a4bc0"
+                strokeWidth="3"
+                fill="none"
+              />
               <path d="M30 90 L45 60" stroke="#3a4bc0" strokeWidth="3" />
               <path d="M52 62 L88 90" stroke="#ef1c1c" strokeWidth="3" />
               <path d="M48 36 a8 8 0 1 1 0.1 0 L48 58 Z" fill="#f97316" />
@@ -1496,7 +1896,9 @@ export default function App() {
           margin: "16px 0 9px",
         }}
       >
-        <h3 style={{ fontSize: 15, fontWeight: 800, margin: 0 }}>Последние оценки</h3>
+        <h3 style={{ fontSize: 15, fontWeight: 800, margin: 0 }}>
+          Последние оценки
+        </h3>
         <button
           onClick={() => setTab("grades")}
           style={{
@@ -1566,9 +1968,26 @@ export default function App() {
                 />
               )}
             </div>
-            <div style={{ fontSize: 13, fontWeight: 700, marginTop: 6, lineHeight: 1.2 }}>{g.kind}</div>
-            <div style={{ fontSize: 9, color: "#b4bde6", marginTop: 3, padding: "0 2px", lineHeight: 1.2 }}>
-              {g.date}
+            <div
+              style={{
+                fontSize: 13,
+                fontWeight: 700,
+                marginTop: 6,
+                lineHeight: 1.2,
+              }}
+            >
+              {String(g.date).split(",")[0]}
+            </div>
+            <div
+              style={{
+                fontSize: 9,
+                color: "#b4bde6",
+                marginTop: 3,
+                padding: "0 2px",
+                lineHeight: 1.2,
+              }}
+            >
+              {String(g.date).split(",").slice(1).join(",").trim()}
             </div>
           </div>
         ))}
@@ -1585,7 +2004,14 @@ export default function App() {
           overflow: "hidden",
         }}
       >
-        <div style={{ width: 118, height: "100%", position: "relative", flexShrink: 0 }}>
+        <div
+          style={{
+            width: 118,
+            height: "100%",
+            position: "relative",
+            flexShrink: 0,
+          }}
+        >
           <div
             style={{
               position: "absolute",
@@ -1696,8 +2122,18 @@ export default function App() {
         >
           <span style={{ fontSize: 18, fontWeight: 800 }}>Расписание</span>
           <div style={{ display: "flex", gap: 22, paddingRight: 8 }}>
-            <ChevronLeft size={22} color={BLUE} onClick={() => slide(-1)} style={{ cursor: "pointer" }} />
-            <ChevronRight size={22} color={BLUE} onClick={() => slide(1)} style={{ cursor: "pointer" }} />
+            <ChevronLeft
+              size={22}
+              color={BLUE}
+              onClick={() => slide(-1)}
+              style={{ cursor: "pointer" }}
+            />
+            <ChevronRight
+              size={22}
+              color={BLUE}
+              onClick={() => slide(1)}
+              style={{ cursor: "pointer" }}
+            />
           </div>
         </div>
 
@@ -1724,14 +2160,27 @@ export default function App() {
     <svg width="90" height="90" viewBox="0 0 270 270" fill="none">
       <rect x="2" y="170" width="266" height="96" rx="48" fill="#8cb36e" />
       <path d="M96 92 L174 92 L186 190 L84 190 Z" fill="#f3c9a0" />
-      <path d="M100 100 L80 205" stroke="#f3c9a0" strokeWidth="17" strokeLinecap="round" />
-      <path d="M170 100 L190 205" stroke="#f3c9a0" strokeWidth="17" strokeLinecap="round" />
+      <path
+        d="M100 100 L80 205"
+        stroke="#f3c9a0"
+        strokeWidth="17"
+        strokeLinecap="round"
+      />
+      <path
+        d="M170 100 L190 205"
+        stroke="#f3c9a0"
+        strokeWidth="17"
+        strokeLinecap="round"
+      />
       <path d="M104 88 L135 118 L166 88 L172 150 L98 150 Z" fill="#fff" />
       <ellipse cx="135" cy="205" rx="82" ry="30" fill="#5b7fd6" />
       <ellipse cx="100" cy="226" rx="30" ry="12" fill="#f3c9a0" />
       <ellipse cx="170" cy="226" rx="30" ry="12" fill="#f3c9a0" />
       <circle cx="135" cy="52" r="27" fill="#f3c9a0" />
-      <path d="M108 52 C106 22 164 22 162 52 C156 36 120 36 108 52 Z" fill="#8a4b2d" />
+      <path
+        d="M108 52 C106 22 164 22 162 52 C156 36 120 36 108 52 Z"
+        fill="#8a4b2d"
+      />
       <circle cx="135" cy="22" r="9" fill="#8a4b2d" />
     </svg>
   );
@@ -1750,8 +2199,22 @@ export default function App() {
     if (openChat) {
       const c = chats.find((x) => x.id === openChat);
       return (
-        <div style={{ ...panel, marginTop: 8, display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+        <div
+          style={{
+            ...panel,
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginBottom: 12,
+            }}
+          >
             <button
               onClick={() => setOpenChat(null)}
               style={{
@@ -1786,7 +2249,14 @@ export default function App() {
             </div>
             <div style={{ fontSize: 15, fontWeight: 700 }}>{c.name}</div>
           </div>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+            }}
+          >
             {c.messages.map((m, i) => (
               <div
                 key={i}
@@ -1794,13 +2264,19 @@ export default function App() {
                   alignSelf: m.me ? "flex-end" : "flex-start",
                   maxWidth: "80%",
                   background: m.me ? BLUE : "var(--bub)",
-                  borderRadius: m.me ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+                  borderRadius: m.me
+                    ? "14px 14px 4px 14px"
+                    : "14px 14px 14px 4px",
                   padding: "7px 11px",
                   animation: "pop .25s ease both",
                 }}
               >
                 {!m.me && (
-                  <div style={{ fontSize: 10, color: "#b4bde6", marginBottom: 2 }}>{m.who}</div>
+                  <div
+                    style={{ fontSize: 10, color: "#b4bde6", marginBottom: 2 }}
+                  >
+                    {m.who}
+                  </div>
                 )}
                 <div style={{ fontSize: 13.5 }}>{m.text}</div>
                 <div
@@ -1933,8 +2409,17 @@ export default function App() {
               }}
             >
               {Yoga}
-              <div style={{ fontSize: 15, fontWeight: 800, marginTop: 22 }}>Пока нет публикаций</div>
-              <div style={{ fontSize: 12.5, marginTop: 7, maxWidth: 260, lineHeight: 1.3 }}>
+              <div style={{ fontSize: 15, fontWeight: 800, marginTop: 22 }}>
+                Пока нет публикаций
+              </div>
+              <div
+                style={{
+                  fontSize: 12.5,
+                  marginTop: 7,
+                  maxWidth: 260,
+                  lineHeight: 1.3,
+                }}
+              >
                 Скоро здесь появятся интересные новости и объявления
               </div>
             </div>
@@ -1972,7 +2457,9 @@ export default function App() {
                     {c.name[0]}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 700, fontSize: 13.5 }}>{c.name}</div>
+                    <div style={{ fontWeight: 700, fontSize: 13.5 }}>
+                      {c.name}
+                    </div>
                     <div
                       style={{
                         fontSize: 11,
@@ -2047,7 +2534,14 @@ export default function App() {
           </div>
           {!empty && (
             <>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 7 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginTop: 7,
+                }}
+              >
                 <div
                   style={{
                     width: 17,
@@ -2063,7 +2557,13 @@ export default function App() {
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 600 }}>
                   {done}/{withHw.length}{" "}
-                  <span style={{ fontSize: 11.5, color: "var(--mut)", fontWeight: 400 }}>
+                  <span
+                    style={{
+                      fontSize: 11.5,
+                      color: "var(--mut)",
+                      fontWeight: 400,
+                    }}
+                  >
                     ДЗ на {isToday ? "сегодня" : "день"}
                   </span>
                 </span>
@@ -2110,7 +2610,9 @@ export default function App() {
                 }}
               >
                 <div
-                  onClick={() => l.homework && setExpanded((e) => ({ ...e, [k]: !e[k] }))}
+                  onClick={() =>
+                    l.homework && setExpanded((e) => ({ ...e, [k]: !e[k] }))
+                  }
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -2119,19 +2621,39 @@ export default function App() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 14.5, fontWeight: 800, lineHeight: 1.2 }}>{l.subject}</div>
-                    <div style={{ fontSize: 12.5, color: "var(--mut)", marginTop: 1, lineHeight: 1.2 }}>
+                    <div
+                      style={{
+                        fontSize: 14.5,
+                        fontWeight: 800,
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {l.subject}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 12.5,
+                        color: "var(--mut)",
+                        marginTop: 1,
+                        lineHeight: 1.2,
+                      }}
+                    >
                       {l.time}
                     </div>
                   </div>
-                  <ChevronRight
-                    size={18}
-                    color={BLUE}
-                    style={{
-                      transform: open ? "rotate(90deg)" : "none",
-                      transition: "transform .25s",
-                    }}
-                  />
+                  <div
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    {gradeTile(l.grade)}
+                    <ChevronRight
+                      size={18}
+                      color={BLUE}
+                      style={{
+                        transform: open ? "rotate(90deg)" : "none",
+                        transition: "transform .25s",
+                      }}
+                    />
+                  </div>
                 </div>
                 {l.homework && (
                   <div
@@ -2256,7 +2778,8 @@ export default function App() {
           alignItems: "center",
           justifyContent: "center",
           fontWeight: 800,
-          fontSize: String(txt).length > 3 ? 11 : String(txt).length > 2 ? 12 : 16,
+          fontSize:
+            String(txt).length > 3 ? 11 : String(txt).length > 2 ? 12 : 16,
         }}
       >
         {txt}
@@ -2272,7 +2795,9 @@ export default function App() {
           />
         )}
       </div>
-      {o.caption && <div style={{ fontSize: 11, marginTop: 3 }}>{o.caption}</div>}
+      {o.caption && (
+        <div style={{ fontSize: 11, marginTop: 3 }}>{o.caption}</div>
+      )}
     </div>
   );
 
@@ -2292,7 +2817,14 @@ export default function App() {
 
   const GradesTab = (
     <div>
-      <div style={{ display: "flex", gap: 10, margin: "0 0 20px", flexWrap: "wrap" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 10,
+          margin: "0 0 20px",
+          flexWrap: "wrap",
+        }}
+      >
         <div
           style={{
             background: "rgba(255,255,255,0.12)",
@@ -2304,7 +2836,8 @@ export default function App() {
             fontSize: 17,
           }}
         >
-          <Calendar size={20} color="#b4bde6" /> 2026/2027 <ChevronDown size={18} color="#b4bde6" />
+          <Calendar size={20} color="#b4bde6" /> 2026/2027{" "}
+          <ChevronDown size={18} color="#b4bde6" />
         </div>
         <div
           onClick={() => setQuarter((quarter % 4) + 1)}
@@ -2345,7 +2878,14 @@ export default function App() {
           minHeight: "calc(100vh - 220px)",
         }}
       >
-        <div style={{ display: "flex", gap: 10, margin: "0 0 18px", paddingTop: 0 }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            margin: "0 0 18px",
+            paddingTop: 0,
+          }}
+        >
           {[
             { t: "Рейтинг в классе", n: 1, silver: false },
             { t: "Рейтинг в параллели", n: 3, silver: true },
@@ -2366,7 +2906,13 @@ export default function App() {
               }}
             >
               <Diamond n={b.n} silver={b.silver} size={30} />
-              <span style={{ fontSize: 16, lineHeight: 1.25, whiteSpace: "pre-line" }}>
+              <span
+                style={{
+                  fontSize: 16,
+                  lineHeight: 1.25,
+                  whiteSpace: "pre-line",
+                }}
+              >
                 {b.t.replace(" в ", "\nв ")}
               </span>
             </div>
@@ -2389,42 +2935,89 @@ export default function App() {
                   animation: `fadeIn .35s ${si * 0.06}s ease both`,
                 }}
               >
-                <div style={{ background: p.a, padding: "14px 112px 14px 16px", minHeight: 96 }}>
+                <div
+                  style={{
+                    background: p.a,
+                    padding: "14px 112px 14px 16px",
+                    minHeight: 96,
+                  }}
+                >
                   <div style={{ fontSize: 24, fontWeight: 800 }}>{sj.name}</div>
                   {sj.formative.length > 0 && (
-                    <div style={{ display: "flex", gap: 14, marginTop: 6, alignItems: "flex-end" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 14,
+                        marginTop: 6,
+                        alignItems: "flex-end",
+                      }}
+                    >
                       <div>
-                        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", marginBottom: 5 }}>
+                        <div
+                          style={{
+                            fontSize: 12,
+                            color: "rgba(255,255,255,0.75)",
+                            marginBottom: 5,
+                          }}
+                        >
                           Формативные баллы
                         </div>
                         <div style={{ display: "flex", gap: 6 }}>
                           {sj.formative.slice(0, 4).map((g, i) => (
-                            <React.Fragment key={g.id ?? i}>{gTile(g.score, { dot: g.dot })}</React.Fragment>
+                            <React.Fragment key={g.id ?? i}>
+                              {gTile(g.score, { dot: g.dot })}
+                            </React.Fragment>
                           ))}
                           {sj.formative.length > 4 && gTile("…")}
                         </div>
                       </div>
                       {sj.formative.length > 1 && (
                         <div>
-                          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", marginBottom: 5 }}>
+                          <div
+                            style={{
+                              fontSize: 12,
+                              color: "rgba(255,255,255,0.75)",
+                              marginBottom: 5,
+                            }}
+                          >
                             Средний
                           </div>
-                          {gTile(isNaN(fAvg) ? "—" : fAvg.toFixed(1), { w: 44 })}
+                          {gTile(isNaN(fAvg) ? "—" : fAvg.toFixed(1), {
+                            w: 44,
+                          })}
                         </div>
                       )}
                     </div>
                   )}
                 </div>
-                <div style={{ background: p.b, padding: "14px 112px 14px 16px", minHeight: 64 }}>
+                <div
+                  style={{
+                    background: p.b,
+                    padding: "14px 112px 14px 16px",
+                    minHeight: 64,
+                  }}
+                >
                   {sj.summative.length === 0 ? (
-                    <div style={{ fontSize: 17, lineHeight: 1.3, color: "rgba(255,255,255,0.85)" }}>
+                    <div
+                      style={{
+                        fontSize: 17,
+                        lineHeight: 1.3,
+                        color: "rgba(255,255,255,0.85)",
+                      }}
+                    >
                       Суммативные баллы ещё
                       <br />
                       не выставлены
                     </div>
                   ) : (
                     <>
-                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.8)", marginBottom: 5 }}>
+                      <div
+                        style={{
+                          fontSize: 12,
+                          color: "rgba(255,255,255,0.8)",
+                          marginBottom: 5,
+                        }}
+                      >
                         Суммативные баллы
                       </div>
                       <div style={{ display: "flex", gap: 8 }}>
@@ -2461,10 +3054,22 @@ export default function App() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 30, fontWeight: 900, lineHeight: 1.1 }}>
-                      {isNaN(total) ? "—" : finals ? Math.round(total) : total.toFixed(1)}
+                    <div
+                      style={{ fontSize: 30, fontWeight: 900, lineHeight: 1.1 }}
+                    >
+                      {isNaN(total)
+                        ? "—"
+                        : finals
+                          ? Math.round(total)
+                          : total.toFixed(1)}
                     </div>
-                    <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", marginTop: 2 }}>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        color: "rgba(255,255,255,0.7)",
+                        marginTop: 2,
+                      }}
+                    >
                       {finals ? "Итоговый балл" : "Общий балл"}
                     </div>
                   </div>
@@ -2478,7 +3083,11 @@ export default function App() {
             );
           })}
           {subjects.length === 0 && (
-            <div style={{ textAlign: "center", color: "var(--mut2)", padding: 30 }}>Оценок пока нет</div>
+            <div
+              style={{ textAlign: "center", color: "var(--mut2)", padding: 30 }}
+            >
+              Оценок пока нет
+            </div>
           )}
         </div>
       </div>
@@ -2492,7 +3101,9 @@ export default function App() {
       <div style={{ ...glass, textAlign: "center", marginBottom: 16 }}>
         <div style={{ fontSize: 56, animation: "pop .6s ease both" }}>🏆</div>
         <div style={{ fontSize: 22, fontWeight: 800 }}>Ты на 1 месте!</div>
-        <div style={{ fontSize: 13, color: "#b4bde6", marginTop: 4 }}>Так держать, {profile.name}</div>
+        <div style={{ fontSize: 13, color: "#b4bde6", marginTop: 4 }}>
+          Так держать, {profile.name}
+        </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         {CLASSMATES.map((c, i) => (
@@ -2515,7 +3126,13 @@ export default function App() {
                 height: 32,
                 borderRadius: "50%",
                 background:
-                  i === 0 ? "#facc15" : i === 1 ? "#cbd5e1" : i === 2 ? "#d97706" : "#141a4a",
+                  i === 0
+                    ? "#facc15"
+                    : i === 1
+                      ? "#cbd5e1"
+                      : i === 2
+                        ? "#d97706"
+                        : "#141a4a",
                 color: i < 3 ? "#111" : "#fff",
                 display: "flex",
                 alignItems: "center",
@@ -2568,7 +3185,9 @@ export default function App() {
                 />
               </div>
             </div>
-            <div style={{ fontWeight: 800, fontSize: 16 }}>{c.score.toFixed(1)}</div>
+            <div style={{ fontWeight: 800, fontSize: 16 }}>
+              {c.score.toFixed(1)}
+            </div>
           </div>
         ))}
       </div>
@@ -2590,7 +3209,14 @@ export default function App() {
         minHeight: 62,
       }}
     >
-      <div style={{ width: 34, display: "flex", justifyContent: "center", flexShrink: 0 }}>
+      <div
+        style={{
+          width: 34,
+          display: "flex",
+          justifyContent: "center",
+          flexShrink: 0,
+        }}
+      >
         {icon}
       </div>
       <div
@@ -2605,13 +3231,20 @@ export default function App() {
         }}
       >
         <span style={{ flex: 1 }}>{label}</span>
-        {right && <span style={{ color: "var(--mut)", marginRight: 6 }}>{right}</span>}
+        {right && (
+          <span style={{ color: "var(--mut)", marginRight: 6 }}>{right}</span>
+        )}
         <ChevronRight size={22} color={color || "#b9bdc9"} />
       </div>
     </div>
   );
 
-  const menuCard = { background: "var(--s3)", color: "var(--fg)", borderRadius: 24, overflow: "hidden" };
+  const menuCard = {
+    background: "var(--s3)",
+    color: "var(--fg)",
+    borderRadius: 24,
+    overflow: "hidden",
+  };
   const ic = (C, c = "#9fb0d6") => <C size={28} strokeWidth={1.5} color={c} />;
 
   const ProfileTab = (
@@ -2625,7 +3258,13 @@ export default function App() {
           alignItems: "center",
         }}
       >
-        <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           {avatarImg(130)}
           <button
             onClick={() => fileRef.current && fileRef.current.click()}
@@ -2647,10 +3286,24 @@ export default function App() {
             <Plus size={30} color={BLUE} strokeWidth={2.5} />
           </button>
         </div>
-        <div style={{ fontSize: 32, fontWeight: 800, marginTop: 22, textAlign: "center" }}>
+        <div
+          style={{
+            fontSize: 32,
+            fontWeight: 800,
+            marginTop: 22,
+            textAlign: "center",
+          }}
+        >
           {profile.fullName}
         </div>
-        <div style={{ fontSize: 22, color: "#b7bfd0", fontWeight: 600, marginTop: 14 }}>
+        <div
+          style={{
+            fontSize: 22,
+            color: "#b7bfd0",
+            fontWeight: 600,
+            marginTop: 14,
+          }}
+        >
           Базовая версия
         </div>
         <button
@@ -2674,7 +3327,8 @@ export default function App() {
 
       <div
         style={{
-          background: "var(--s1)", color: "var(--fg)",
+          background: "var(--s1)",
+          color: "var(--fg)",
           borderRadius: "34px 34px 0 0",
           marginTop: -16,
           padding: "32px 22px 20px",
@@ -2684,8 +3338,16 @@ export default function App() {
         }}
       >
         <div style={menuCard}>
-          <MenuRow icon={ic(QrCode)} label="QR-код для входа" onClick={() => alert("QR-код для входа")} />
-          <MenuRow icon={ic(User)} label="Связанные аккаунты" onClick={() => alert("Связанные аккаунты")} />
+          <MenuRow
+            icon={ic(QrCode)}
+            label="QR-код для входа"
+            onClick={() => alert("QR-код для входа")}
+          />
+          <MenuRow
+            icon={ic(User)}
+            label="Связанные аккаунты"
+            onClick={() => alert("Связанные аккаунты")}
+          />
           <MenuRow
             icon={ic(Globe)}
             label="Язык"
@@ -2701,7 +3363,9 @@ export default function App() {
             icon={ic(Bell)}
             label="Уведомления"
             right={settings.notify ? "Вкл." : "Выкл."}
-            onClick={() => setSettings({ ...settings, notify: !settings.notify })}
+            onClick={() =>
+              setSettings({ ...settings, notify: !settings.notify })
+            }
           />
           <MenuRow
             icon={ic(Settings, "#9db8ff")}
@@ -2759,8 +3423,18 @@ export default function App() {
   );
 
   /* ---------- РЕДАКТОР ---------- */
-  const card = { background: "var(--s3)", color: "var(--fg)", borderRadius: 24, padding: 16 };
-  const fieldLabel = { fontSize: 12, color: "var(--mut2)", marginBottom: 6, display: "block" };
+  const card = {
+    background: "var(--s3)",
+    color: "var(--fg)",
+    borderRadius: 24,
+    padding: 16,
+  };
+  const fieldLabel = {
+    fontSize: 12,
+    color: "var(--mut2)",
+    marginBottom: 6,
+    display: "block",
+  };
   const inputS = {
     width: "100%",
     background: "var(--s1)",
@@ -2800,7 +3474,14 @@ export default function App() {
   };
 
   const SecTitle = ({ icon, title, right }) => (
-    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        marginBottom: 14,
+      }}
+    >
       <div
         style={{
           width: 34,
@@ -2850,7 +3531,8 @@ export default function App() {
   );
 
   const SubjectSelect = ({ value, onChange }) => {
-    const list = SUBJECTS.includes(value) || !value ? SUBJECTS : [value, ...SUBJECTS];
+    const list =
+      SUBJECTS.includes(value) || !value ? SUBJECTS : [value, ...SUBJECTS];
     return (
       <select
         value={value}
@@ -2860,7 +3542,13 @@ export default function App() {
             if (v && v.trim()) onChange(v.trim());
           } else onChange(e.target.value);
         }}
-        style={{ ...inputS, flex: 1, minWidth: 0, padding: "10px 12px", fontSize: 15 }}
+        style={{
+          ...inputS,
+          flex: 1,
+          minWidth: 0,
+          padding: "10px 12px",
+          fontSize: 15,
+        }}
       >
         {list.map((n) => (
           <option key={n} value={n}>
@@ -2883,7 +3571,8 @@ export default function App() {
     setSchedule(n);
   };
   const resetAll = () => {
-    if (!window.confirm("Сбросить оценки, расписание и отметки ДЗ к исходным?")) return;
+    if (!window.confirm("Сбросить оценки, расписание и отметки ДЗ к исходным?"))
+      return;
     setGrades(DEFAULT_GRADES);
     setWeek(DEFAULT_WEEK);
     setHwDone({});
@@ -2895,7 +3584,8 @@ export default function App() {
       <Sub title="Редактор" back="profile" />
       <div
         style={{
-          background: "var(--s0)", color: "var(--fg)",
+          background: "var(--s0)",
+          color: "var(--fg)",
           borderRadius: "34px 34px 0 0",
           margin: "0 -16px",
           padding: "20px 16px 230px",
@@ -2908,11 +3598,24 @@ export default function App() {
       >
         {/* профиль */}
         <div style={card}>
-          <SecTitle icon={<UserCircle size={20} color="#fff" />} title="Профиль" />
-          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14 }}>
+          <SecTitle
+            icon={<UserCircle size={20} color="#fff" />}
+            title="Профиль"
+          />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              marginBottom: 14,
+            }}
+          >
             {avatarImg(64)}
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <button style={smallBtn} onClick={() => fileRef.current && fileRef.current.click()}>
+              <button
+                style={smallBtn}
+                onClick={() => fileRef.current && fileRef.current.click()}
+              >
                 <Plus size={16} /> Загрузить фото
               </button>
               <button
@@ -2938,7 +3641,9 @@ export default function App() {
               <input
                 style={inputS}
                 value={profile.name}
-                onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, name: e.target.value })
+                }
               />
             </label>
             <label>
@@ -2946,7 +3651,9 @@ export default function App() {
               <input
                 style={inputS}
                 value={profile.fullName}
-                onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, fullName: e.target.value })
+                }
               />
             </label>
             <label>
@@ -2954,7 +3661,9 @@ export default function App() {
               <input
                 style={inputS}
                 value={profile.className}
-                onChange={(e) => setProfile({ ...profile, className: e.target.value })}
+                onChange={(e) =>
+                  setProfile({ ...profile, className: e.target.value })
+                }
               />
             </label>
             <label>
@@ -2962,8 +3671,14 @@ export default function App() {
               <input
                 style={inputS}
                 placeholder="https://..."
-                value={!hasPhoto || String(profile.avatar).startsWith("data:") ? "" : profile.avatar}
-                onChange={(e) => setProfile({ ...profile, avatar: e.target.value })}
+                value={
+                  !hasPhoto || String(profile.avatar).startsWith("data:")
+                    ? ""
+                    : profile.avatar
+                }
+                onChange={(e) =>
+                  setProfile({ ...profile, avatar: e.target.value })
+                }
               />
             </label>
           </div>
@@ -3000,7 +3715,8 @@ export default function App() {
               <div
                 key={g.id ?? idx}
                 style={{
-                  background: "var(--s1)", color: "var(--fg)",
+                  background: "var(--s1)",
+                  color: "var(--fg)",
                   borderRadius: 18,
                   padding: 12,
                   display: "flex",
@@ -3029,8 +3745,16 @@ export default function App() {
                       fontFamily: font,
                     }}
                   />
-                  <SubjectSelect value={g.subject} onChange={(v) => updGrade(idx, "subject", v)} />
-                  <button style={trashBtn} onClick={() => setGrades(grades.filter((_, i) => i !== idx))}>
+                  <SubjectSelect
+                    value={g.subject}
+                    onChange={(v) => updGrade(idx, "subject", v)}
+                  />
+                  <button
+                    style={trashBtn}
+                    onClick={() =>
+                      setGrades(grades.filter((_, i) => i !== idx))
+                    }
+                  >
                     <Trash2 size={17} color="#ef4444" />
                   </button>
                 </div>
@@ -3057,18 +3781,36 @@ export default function App() {
                 </div>
                 <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                   <input
-                    style={{ ...inputS, flex: 1, padding: "10px 12px", fontSize: 14 }}
+                    style={{
+                      ...inputS,
+                      flex: 1,
+                      padding: "10px 12px",
+                      fontSize: 14,
+                    }}
                     value={g.date}
                     placeholder="Дата, например ОТВ, ЗА 13 ОКТ."
                     onChange={(e) => updGrade(idx, "date", e.target.value)}
                   />
-                  <span style={{ fontSize: 13, color: "var(--mut2)" }}>Новая</span>
-                  <Toggle on={!!g.dot} onClick={() => updGrade(idx, "dot", !g.dot)} />
+                  <span style={{ fontSize: 13, color: "var(--mut2)" }}>
+                    Новая
+                  </span>
+                  <Toggle
+                    on={!!g.dot}
+                    onClick={() => updGrade(idx, "dot", !g.dot)}
+                  />
                 </div>
               </div>
             ))}
             {grades.length === 0 && (
-              <div style={{ textAlign: "center", color: "var(--mut2)", padding: 12 }}>Оценок нет</div>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "var(--mut2)",
+                  padding: 12,
+                }}
+              >
+                Оценок нет
+              </div>
             )}
           </div>
         </div>
@@ -3120,15 +3862,24 @@ export default function App() {
               </button>
             ))}
           </div>
-          <div style={{ fontSize: 12, color: "var(--mut2)", marginBottom: 12, lineHeight: 1.4 }}>
-            Редактируется день: {dayHint}. Расписание повторяется каждую неделю, воскресенье и праздники — отдых.
+          <div
+            style={{
+              fontSize: 12,
+              color: "var(--mut2)",
+              marginBottom: 12,
+              lineHeight: 1.4,
+            }}
+          >
+            Редактируется день: {dayHint}. Расписание повторяется каждую неделю,
+            воскресенье и праздники — отдых.
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {schedule.map((it, idx) => (
               <div
                 key={it.id}
                 style={{
-                  background: "var(--s1)", color: "var(--fg)",
+                  background: "var(--s1)",
+                  color: "var(--fg)",
                   borderRadius: 18,
                   padding: 12,
                   display: "flex",
@@ -3163,7 +3914,10 @@ export default function App() {
                       setSchedule(
                         schedule
                           .filter((_, i) => i !== idx)
-                          .map((x, i) => ({ ...x, subject: `${i + 1}. ${x.subject.replace(/^\d+\.\s*/, "")}` })),
+                          .map((x, i) => ({
+                            ...x,
+                            subject: `${i + 1}. ${x.subject.replace(/^\d+\.\s*/, "")}`,
+                          })),
                       )
                     }
                   >
@@ -3182,17 +3936,34 @@ export default function App() {
                   placeholder="Домашнее задание"
                   onChange={(e) => updSch(idx, "homework", e.target.value)}
                 />
+                <input
+                  style={{ ...inputS, padding: "10px 12px", fontSize: 14 }}
+                  value={it.grade || ""}
+                  placeholder="Оценка за урок (необязательно)"
+                  onChange={(e) => updSch(idx, "grade", e.target.value)}
+                />
               </div>
             ))}
             {schedule.length === 0 && (
-              <div style={{ textAlign: "center", color: "var(--mut2)", padding: 12 }}>В этот день уроков нет</div>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "var(--mut2)",
+                  padding: 12,
+                }}
+              >
+                В этот день уроков нет
+              </div>
             )}
           </div>
         </div>
 
         {/* настройки */}
         <div style={card}>
-          <SecTitle icon={<Settings size={20} color="#fff" />} title="Настройки" />
+          <SecTitle
+            icon={<Settings size={20} color="#fff" />}
+            title="Настройки"
+          />
           {[
             { l: "Уведомления", k: "notify" },
             { l: "Напоминать о ДЗ", k: "hwRemind" },
@@ -3209,10 +3980,22 @@ export default function App() {
               }}
             >
               <span style={{ flex: 1 }}>{s.l}</span>
-              <Toggle on={settings[s.k]} onClick={() => setSettings({ ...settings, [s.k]: !settings[s.k] })} />
+              <Toggle
+                on={settings[s.k]}
+                onClick={() =>
+                  setSettings({ ...settings, [s.k]: !settings[s.k] })
+                }
+              />
             </div>
           ))}
-          <div style={{ display: "flex", alignItems: "center", minHeight: 52, fontSize: 17 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              minHeight: 52,
+              fontSize: 17,
+            }}
+          >
             <span style={{ flex: 1 }}>Язык</span>
             <div style={{ display: "flex", gap: 6 }}>
               {langs.map((l) => (
@@ -3279,7 +4062,11 @@ export default function App() {
   /* ---------- навигация ---------- */
   const tabs = [
     { id: "home", icon: Home, dot: "#ef4444" },
-    { id: "chat", icon: MessageCircle, dot: chats.some((c) => c.unread) ? "#ef4444" : null },
+    {
+      id: "chat",
+      icon: MessageCircle,
+      dot: chats.some((c) => c.unread) ? "#ef4444" : null,
+    },
     { id: "diary", icon: BookOpen },
     { id: "grades", icon: BarChart3, dot: "#ef4444" },
     { id: "profile", icon: UserCircle },
@@ -3328,7 +4115,13 @@ export default function App() {
         ...THEMES[light ? "light" : "dark"],
       }}
     >
-      <input ref={fileRef} type="file" accept="image/*" onChange={pickPhoto} style={{ display: "none" }} />
+      <input
+        ref={fileRef}
+        type="file"
+        accept="image/*"
+        onChange={pickPhoto}
+        style={{ display: "none" }}
+      />
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes pop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
@@ -3381,7 +4174,11 @@ export default function App() {
             >
               {avatarImg(25)}
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.15 }}>{profile.name}</div>
+                <div
+                  style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.15 }}
+                >
+                  {profile.name}
+                </div>
                 <div
                   style={{
                     fontSize: 9.5,
@@ -3396,7 +4193,15 @@ export default function App() {
                   {profile.className}
                 </div>
               </div>
-              <Dot style={{ top: -2, right: -2, border: "none", width: 8, height: 8 }} />
+              <Dot
+                style={{
+                  top: -2,
+                  right: -2,
+                  border: "none",
+                  width: 8,
+                  height: 8,
+                }}
+              />
             </div>
             <div
               onClick={() => setTab("editor")}
@@ -3421,7 +4226,10 @@ export default function App() {
 
         <div
           key={tab + (openChat || "")}
-          style={{ padding: `0 ${pagePad}px`, animation: "fadeIn .3s ease both" }}
+          style={{
+            padding: `0 ${pagePad}px`,
+            animation: "fadeIn .3s ease both",
+          }}
         >
           {screens[tab]}
         </div>
@@ -3457,7 +4265,10 @@ export default function App() {
             {showToday && (
               <button
                 onClick={() =>
-                  todayRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+                  todayRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  })
                 }
                 style={{
                   position: "fixed",
@@ -3558,7 +4369,9 @@ export default function App() {
                     height: 48,
                     marginLeft: -38,
                     borderRadius: 24,
-                    background: darkNav ? "var(--navact)" : "rgba(255,255,255,0.12)",
+                    background: darkNav
+                      ? "var(--navact)"
+                      : "rgba(255,255,255,0.12)",
                     opacity: active ? 1 : 0,
                     transform: active ? "scale(1)" : "scale(0.6)",
                     transition: "transform .3s, opacity .3s",
