@@ -1065,6 +1065,7 @@ export default function App() {
   );
 
   /* ---------- рейтинг на главной ---------- */
+  const RATING_ROW_H = 32;
   const ratingData = [
     { id: "me", me: true, fill: 100 },
     { id: "a", fill: 72, badge: "- 1" },
@@ -1073,7 +1074,7 @@ export default function App() {
   const isTop = ratingStep === 1;
 
   const ratingRows = (
-    <div style={{ position: "relative", height: ROW_H * 3, marginTop: 6 }}>
+    <div style={{ position: "relative", height: RATING_ROW_H * 3, marginTop: 6 }}>
       {ratingData.map((r) => {
         const rank = (isTop ? ORDER_AFTER : ORDER_BEFORE)[r.id];
         const me = !!r.me;
@@ -1084,15 +1085,15 @@ export default function App() {
             key={r.id}
             style={{
               position: "absolute",
-              left: me ? -6 : 0,
-              right: me ? -6 : 0,
-              top: rank * ROW_H,
-              height: 42,
+              left: me ? -5 : 0,
+              right: me ? -5 : 0,
+              top: rank * RATING_ROW_H,
+              height: 30,
               display: "flex",
               alignItems: "center",
-              gap: 10,
-              padding: "0 10px",
-              border: me ? "2px solid #fff" : "2px solid transparent",
+              gap: 8,
+              padding: me ? "0 5px" : "0",
+              border: me ? "1.5px solid #fff" : "1.5px solid transparent",
               borderRadius: 999,
               boxSizing: "border-box",
               transition: "top .9s cubic-bezier(.34,1.35,.5,1)",
@@ -1102,14 +1103,15 @@ export default function App() {
           >
             <div
               style={{
-                width: 28,
-                height: 28,
+                width: 19,
+                height: 19,
+                minWidth: 19,
                 borderRadius: "50%",
                 background: me ? "#7ea6ff" : "#141a4a",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: 14,
+                fontSize: 11,
                 fontWeight: 800,
                 flexShrink: 0,
               }}
@@ -1119,11 +1121,11 @@ export default function App() {
             <div
               style={{
                 flex: 1,
-                height: 26,
+                height: 17,
                 borderRadius: 999,
                 background: "#141a4a",
                 position: "relative",
-                maxWidth: 140,
+                maxWidth: 100,
               }}
             >
               <div
@@ -1137,15 +1139,15 @@ export default function App() {
                 }}
               >
                 {me && (
-                  <div style={{ position: "absolute", right: -4, top: -4 }}>
-                    {avatarImg(34)}
+                  <div style={{ position: "absolute", right: -3, top: -2.5 }}>
+                    {avatarImg(22)}
                     {isTop && (
                       <span
                         style={{
                           position: "absolute",
-                          top: -16,
-                          left: 6,
-                          fontSize: 18,
+                          top: -11,
+                          left: 4,
+                          fontSize: 12,
                           animation: "pop .6s ease both",
                         }}
                       >
@@ -1157,12 +1159,12 @@ export default function App() {
               </div>
               {!me && (
                 <Loader
-                  size={18}
+                  size={12}
                   color="#4d5aa8"
                   style={{
                     position: "absolute",
-                    right: 6,
-                    top: 4,
+                    right: 4,
+                    top: 2.5,
                     animation: "spin 1.4s linear infinite",
                   }}
                 />
@@ -1170,15 +1172,16 @@ export default function App() {
             </div>
             <span
               style={{
-                fontSize: 13,
+                fontSize: 11,
                 fontWeight: 700,
-                padding: "4px 12px",
+                padding: "2px 9px",
                 borderRadius: 999,
                 color: "#fff",
-                border: `1.5px solid ${green ? "#22c55e" : "#e11d2e"}`,
+                border: `1px solid ${green ? "#22c55e" : "#e11d2e"}`,
                 background: me && !green ? "#e11d2e" : "transparent",
                 transition: "all .4s",
                 animation: green ? "pop .6s .5s ease both" : "none",
+                whiteSpace: "nowrap",
               }}
             >
               {badge}
@@ -1197,12 +1200,16 @@ export default function App() {
         flexDirection: "column",
         alignItems: "center",
         textAlign: "center",
-        padding: "36px 12px 60px",
+        padding: "22px 8px 36px",
       }}
     >
-      <Tree />
-      <div style={{ fontSize: 24, fontWeight: 700, marginTop: 28 }}>Нет уроков</div>
-      <div style={{ fontSize: 20, color: "var(--mut)", marginTop: 14, lineHeight: 1.35 }}>
+      <div style={{ width: 105, height: 91 }}>
+        <div style={{ transform: "scale(0.7)", transformOrigin: "top left", width: 150, height: 130 }}>
+          <Tree />
+        </div>
+      </div>
+      <div style={{ fontSize: 17, fontWeight: 700, marginTop: 16 }}>Нет уроков</div>
+      <div style={{ fontSize: 13.5, color: "var(--mut)", marginTop: 8, lineHeight: 1.35 }}>
         {info && info.holiday ? `${info.title}. ` : ""}
         Отличный день, чтобы отдохнуть!
       </div>
@@ -1216,12 +1223,13 @@ export default function App() {
       <div
         key={item.id}
         style={{
-          background: "var(--s4)", color: "var(--fg)",
-          borderRadius: 22,
-          padding: "14px 16px",
+          background: "var(--s4)",
+          color: "var(--fg)",
+          borderRadius: 16,
+          padding: "11px 11px 11px",
           display: "flex",
           flexDirection: "column",
-          gap: 10,
+          gap: 7.5,
           opacity: dn ? 0.75 : 1,
           transition: "opacity .3s",
         }}
@@ -1236,34 +1244,38 @@ export default function App() {
           }}
         >
           <div>
-            <div style={{ fontSize: 20, fontWeight: 800 }}>{item.subject}</div>
-            <div style={{ fontSize: 17, color: "var(--mut)", marginTop: 2 }}>{item.time}</div>
+            <div style={{ fontSize: 14.5, fontWeight: 800, lineHeight: 1.2 }}>{item.subject}</div>
+            <div style={{ fontSize: 12.5, color: "var(--mut)", marginTop: 1, lineHeight: 1.2 }}>
+              {item.time}
+            </div>
           </div>
-          <ChevronRight size={22} color={BLUE} />
+          <ChevronRight size={18} color={BLUE} />
         </div>
         {item.homework && (
           <div
             style={{
               background: "#4d6385",
-              borderRadius: 20,
-              minHeight: 52,
-              padding: "8px 12px",
+              borderRadius: 13,
+              minHeight: 43,
+              padding: "6px 7px 6px 12px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              gap: 10,
+              gap: 8,
+              boxSizing: "border-box",
             }}
           >
-            <span style={{ fontSize: 16, color: "#dbe3f2" }}>Есть домашнее задание</span>
+            <span style={{ fontSize: 12.5, color: "#dbe3f2" }}>Есть домашнее задание</span>
             <button
               onClick={() => toggleL(d, item)}
               style={{
-                width: 36,
-                height: 36,
-                minWidth: 36,
+                width: 21,
+                height: 21,
+                minWidth: 21,
                 borderRadius: "50%",
                 background: dn ? "#22c55e" : "#2f3b4e",
                 border: "none",
+                padding: 0,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -1271,7 +1283,7 @@ export default function App() {
                 transition: "background .3s",
               }}
             >
-              <Check size={20} color={dn ? "#fff" : "#7f8a9c"} />
+              <Check size={13} color={dn ? "#fff" : "#7f8a9c"} />
             </button>
           </div>
         )}
@@ -1292,44 +1304,44 @@ export default function App() {
         key={dateKey(d)}
         ref={isToday ? homeTodayRef : null}
         style={{
-          flex: "0 0 92%",
+          flex: "0 0 100%",
           scrollSnapAlign: "center",
-          background: "var(--s2)", color: "var(--fg)",
-          borderRadius: 30,
-          padding: "26px 16px 16px",
+          background: "var(--s2)",
+          color: "var(--fg)",
+          borderRadius: 28,
+          padding: "17px 11px 14px",
           boxSizing: "border-box",
-          minHeight: 400,
         }}
       >
-        <div style={{ padding: "0 8px" }}>
-          <div style={{ fontSize: 30, fontWeight: 800 }}>
+        <div style={{ padding: "0 11px" }}>
+          <div style={{ fontSize: 17, fontWeight: 800 }}>
             {fmtDate(d)}{" "}
             {isToday && !empty && <span style={{ color: BLUE }}>Сегодня</span>}
           </div>
           {!empty && (
             <>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 7 }}>
                 <div
                   style={{
-                    width: 38,
-                    height: 38,
-                    borderRadius: 10,
+                    width: 17,
+                    height: 17,
+                    borderRadius: 5,
                     background: "#e4e0ff",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <ListChecks size={22} color="#6a5de0" />
+                  <ListChecks size={12} color="#6a5de0" />
                 </div>
-                <span style={{ fontSize: 24, fontWeight: 600 }}>
+                <span style={{ fontSize: 14, fontWeight: 600 }}>
                   {done}/{withHw.length}{" "}
-                  <span style={{ fontSize: 18, color: "var(--mut)", fontWeight: 400 }}>
+                  <span style={{ fontSize: 11.5, color: "var(--mut)", fontWeight: 400 }}>
                     ДЗ на {isToday ? "сегодня" : "день"}
                   </span>
                 </span>
                 <Share
-                  size={22}
+                  size={16}
                   color="#c3c6cf"
                   style={{ cursor: "pointer" }}
                   onClick={() =>
@@ -1341,10 +1353,10 @@ export default function App() {
               </div>
               <div
                 style={{
-                  height: 28,
+                  height: 8,
                   borderRadius: 999,
                   background: "var(--s5)",
-                  margin: "16px 0 14px",
+                  margin: "9px 0 8px",
                   overflow: "hidden",
                 }}
               >
@@ -1364,7 +1376,7 @@ export default function App() {
         {empty ? (
           emptyDay(info)
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
             {lessons.map((x) => lessonCard(x, d))}
           </div>
         )}
@@ -1377,22 +1389,23 @@ export default function App() {
   const slide = (dir) => {
     const el = carRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.92, behavior: "smooth" });
+    el.scrollBy({ left: dir * (el.clientWidth * 0.9 + 11), behavior: "smooth" });
   };
 
   /* ---------- ГЛАВНАЯ ---------- */
   const HomeTab = (
     <>
-      <div style={{ display: "flex", gap: 14, marginTop: 4 }}>
+      <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
         <div
           onClick={() => setTab("rating")}
           style={{
             ...outlined,
+            border: "1px solid rgba(160,175,255,0.45)",
             flex: 1,
-            padding: "16px 18px 12px",
+            padding: "12px 16px 9px",
             minWidth: 0,
             cursor: "pointer",
-            borderRadius: 28,
+            borderRadius: 18,
           }}
         >
           <div
@@ -1400,35 +1413,41 @@ export default function App() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: 6,
             }}
           >
-            <span style={{ fontSize: 19, fontWeight: 700 }}>Рейтинг в классе</span>
-            <ChevronRight size={20} color="#fff" />
+            <span style={{ fontSize: 13.5, fontWeight: 700 }}>Рейтинг в классе</span>
+            <ChevronRight size={15} color="#fff" />
           </div>
           {ratingRows}
         </div>
 
-        <div style={{ width: 112, display: "flex", flexDirection: "column", gap: 8, flexShrink: 0 }}>
+        <div style={{ width: 74, display: "flex", flexDirection: "column", gap: 6, flexShrink: 0 }}>
           <div
             onClick={() => {
               setChatSeg("events");
               setOpenChat(null);
               setTab("chat");
             }}
-            style={{ ...outlined, padding: 14, cursor: "pointer" }}
+            style={{
+              ...outlined,
+              border: "1px solid rgba(160,175,255,0.45)",
+              borderRadius: 18,
+              padding: "13px 9px 12px",
+              cursor: "pointer",
+            }}
           >
-            <div style={{ position: "relative", width: 30 }}>
-              <Bell size={30} color="#fff" strokeWidth={1.6} />
-              <Dot color="#ef4444" style={{ top: -2, right: -4, width: 12, height: 12 }} />
+            <div style={{ marginLeft: 4 }}>
+              <Bell size={20} color="#fff" strokeWidth={1.6} />
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, marginTop: 6 }}>События</div>
+            <div style={{ fontSize: 12, fontWeight: 700, marginTop: 7, whiteSpace: "nowrap" }}>События</div>
           </div>
           <div
             style={{
               ...outlined,
+              border: "1px solid rgba(160,175,255,0.45)",
+              borderRadius: 18,
               flex: 1,
-              minHeight: 96,
+              minHeight: 64,
               background: "#1c2a8f",
               position: "relative",
               overflow: "hidden",
@@ -1437,21 +1456,23 @@ export default function App() {
             <div
               style={{
                 position: "absolute",
-                top: 6,
-                left: 6,
-                right: 6,
+                top: 4,
+                left: 4,
+                right: 4,
+                height: 21,
                 background: "#1b1b1f",
-                borderRadius: 999,
-                padding: "3px 8px 3px 4px",
+                borderRadius: 10,
+                padding: "0 6px 0 4px",
                 display: "flex",
                 alignItems: "center",
                 gap: 4,
-                fontSize: 12,
+                fontSize: 10,
                 zIndex: 2,
+                boxSizing: "border-box",
               }}
             >
-              {avatarImg(18)}
-              <span>В школе</span>
+              {avatarImg(14)}
+              <span style={{ whiteSpace: "nowrap" }}>В школе</span>
             </div>
             <svg
               viewBox="0 0 100 90"
@@ -1472,17 +1493,17 @@ export default function App() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "baseline",
-          margin: "24px 0 12px",
+          margin: "16px 0 9px",
         }}
       >
-        <h3 style={{ fontSize: 28, fontWeight: 800, margin: 0 }}>Последние оценки</h3>
+        <h3 style={{ fontSize: 15, fontWeight: 800, margin: 0 }}>Последние оценки</h3>
         <button
           onClick={() => setTab("grades")}
           style={{
             background: "none",
             border: "none",
             color: "#9db8ff",
-            fontSize: 14,
+            fontSize: 12,
             cursor: "pointer",
           }}
         >
@@ -1492,10 +1513,10 @@ export default function App() {
       <div
         style={{
           display: "flex",
-          gap: 10,
+          gap: 7,
           overflowX: "auto",
-          margin: "0 -16px",
-          padding: "0 16px",
+          margin: "0 -14px",
+          padding: "0 14px",
           scrollbarWidth: "none",
         }}
       >
@@ -1504,10 +1525,11 @@ export default function App() {
             key={g.id ?? i}
             onClick={() => setTab("grades")}
             style={{
-              flex: "0 0 136px",
+              flex: "0 0 89px",
+              height: 89,
               background: i === 3 ? "#16207a" : "#3a4592",
-              borderRadius: 20,
-              padding: "16px 4px 14px",
+              borderRadius: 17,
+              padding: "12px 2px 0",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -1519,23 +1541,33 @@ export default function App() {
             <div style={{ position: "relative" }}>
               <div
                 style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 12,
+                  width: 32,
+                  height: 32,
+                  borderRadius: 10,
                   background: scoreColor(g.score),
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: String(g.score).length > 2 ? 15 : 24,
+                  fontSize: String(g.score).length > 2 ? 11 : 17,
                   fontWeight: 900,
                 }}
               >
                 {g.score}
               </div>
-              {g.dot && <Dot style={{ top: -6, right: -8 }} />}
+              {g.dot && (
+                <Dot
+                  style={{
+                    top: -3.5,
+                    right: -4,
+                    width: 10,
+                    height: 10,
+                    border: "1.5px solid #fff",
+                  }}
+                />
+              )}
             </div>
-            <div style={{ fontSize: 19, fontWeight: 700, marginTop: 10 }}>{g.kind}</div>
-            <div style={{ fontSize: 12, color: "#b4bde6", marginTop: 6, padding: "0 4px" }}>
+            <div style={{ fontSize: 13, fontWeight: 700, marginTop: 6, lineHeight: 1.2 }}>{g.kind}</div>
+            <div style={{ fontSize: 9, color: "#b4bde6", marginTop: 3, padding: "0 2px", lineHeight: 1.2 }}>
               {g.date}
             </div>
           </div>
@@ -1546,39 +1578,40 @@ export default function App() {
         style={{
           marginTop: 24,
           background: "#9b4dff",
-          borderRadius: 22,
-          height: 170,
+          borderRadius: 16,
+          height: 113,
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
         }}
       >
-        <div style={{ width: 140, height: "100%", position: "relative", flexShrink: 0 }}>
+        <div style={{ width: 118, height: "100%", position: "relative", flexShrink: 0 }}>
           <div
             style={{
               position: "absolute",
-              left: 34,
-              top: 36,
-              width: 76,
-              height: 150,
+              left: 24,
+              top: 26,
+              width: 52,
+              height: 100,
               background: "#111",
-              borderRadius: "14px 14px 0 0",
-              border: "3px solid #333",
+              borderRadius: "10px 10px 0 0",
+              border: "2px solid #333",
+              boxSizing: "border-box",
             }}
           />
           <div
             style={{
               position: "absolute",
               left: 0,
-              top: 18,
+              top: 12,
               background: "#ff8a00",
               color: "#fff",
-              fontSize: 54,
+              fontSize: 38,
               fontWeight: 900,
               fontStyle: "italic",
-              padding: "0 22px",
+              padding: "0 15px",
               transform: "rotate(-6deg)",
-              borderRadius: 6,
+              borderRadius: 4,
               lineHeight: 1.1,
             }}
           >
@@ -1587,13 +1620,13 @@ export default function App() {
           <div
             style={{
               position: "absolute",
-              left: 34,
-              top: 78,
+              left: 24,
+              top: 54,
               background: "#ffd400",
               color: "#222",
               fontWeight: 800,
-              fontSize: 14,
-              padding: "3px 12px",
+              fontSize: 10,
+              padding: "2px 9px",
               borderRadius: 999,
               transform: "rotate(-12deg)",
             }}
@@ -1603,13 +1636,13 @@ export default function App() {
           <div
             style={{
               position: "absolute",
-              left: 4,
-              top: 106,
+              left: 3,
+              top: 74,
               background: "#ffd400",
               color: "#222",
               fontWeight: 800,
-              fontSize: 14,
-              padding: "3px 12px",
+              fontSize: 10,
+              padding: "2px 9px",
               borderRadius: 999,
               transform: "rotate(10deg)",
             }}
@@ -1617,8 +1650,8 @@ export default function App() {
             бесплатно
           </div>
         </div>
-        <div style={{ flex: 1, paddingRight: 14 }}>
-          <div style={{ fontSize: 22, fontWeight: 800, lineHeight: 1.25 }}>
+        <div style={{ flex: 1, paddingRight: 10 }}>
+          <div style={{ fontSize: 15, fontWeight: 800, lineHeight: 1.3 }}>
             Вам подарок 🎁
             <br />
             PRO-подписка на 7 дней!
@@ -1626,14 +1659,15 @@ export default function App() {
           <button
             onClick={() => alert("PRO-подписка на 7 дней активирована 🎉")}
             style={{
-              marginTop: 12,
+              marginTop: 10,
               background: "#5fb800",
               color: "#fff",
               fontWeight: 800,
-              fontSize: 17,
+              fontSize: 13,
               border: "none",
-              borderRadius: 6,
-              padding: "12px 20px",
+              borderRadius: 4,
+              padding: "0 20px",
+              height: 26,
               cursor: "pointer",
             }}
           >
@@ -1644,11 +1678,12 @@ export default function App() {
 
       <div
         style={{
-          background: "var(--s0)", color: "var(--fg)",
-          borderRadius: "34px 34px 0 0",
-          margin: "28px -16px 0",
-          padding: "28px 0 140px",
-          minHeight: 600,
+          background: "var(--s0)",
+          color: "var(--fg)",
+          borderRadius: "28px 28px 0 0",
+          margin: "24px -14px 0",
+          padding: "24px 0 110px",
+          minHeight: 520,
         }}
       >
         <div
@@ -1656,13 +1691,13 @@ export default function App() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "0 20px 18px",
+            padding: "0 18px 19px",
           }}
         >
-          <span style={{ fontSize: 32, fontWeight: 800 }}>Расписание</span>
-          <div style={{ display: "flex", gap: 28, paddingRight: 8 }}>
-            <ChevronLeft size={26} color={BLUE} onClick={() => slide(-1)} style={{ cursor: "pointer" }} />
-            <ChevronRight size={26} color={BLUE} onClick={() => slide(1)} style={{ cursor: "pointer" }} />
+          <span style={{ fontSize: 18, fontWeight: 800 }}>Расписание</span>
+          <div style={{ display: "flex", gap: 22, paddingRight: 8 }}>
+            <ChevronLeft size={22} color={BLUE} onClick={() => slide(-1)} style={{ cursor: "pointer" }} />
+            <ChevronRight size={22} color={BLUE} onClick={() => slide(1)} style={{ cursor: "pointer" }} />
           </div>
         </div>
 
@@ -1670,10 +1705,10 @@ export default function App() {
           ref={carRef}
           style={{
             display: "flex",
-            gap: 10,
+            gap: 11,
             overflowX: "auto",
             scrollSnapType: "x mandatory",
-            padding: "0 4%",
+            padding: "0 5%",
             scrollbarWidth: "none",
             alignItems: "flex-start",
           }}
@@ -1686,7 +1721,7 @@ export default function App() {
 
   /* ---------- ЧАТ / СОБЫТИЯ ---------- */
   const Yoga = (
-    <svg width="270" height="270" viewBox="0 0 270 270" fill="none">
+    <svg width="90" height="90" viewBox="0 0 270 270" fill="none">
       <rect x="2" y="170" width="266" height="96" rx="48" fill="#8cb36e" />
       <path d="M96 92 L174 92 L186 190 L84 190 Z" fill="#f3c9a0" />
       <path d="M100 100 L80 205" stroke="#f3c9a0" strokeWidth="17" strokeLinecap="round" />
@@ -1703,11 +1738,12 @@ export default function App() {
 
   const ChatTab = (() => {
     const panel = {
-      background: "var(--s0)", color: "var(--fg)",
-      borderRadius: "34px 34px 0 0",
-      margin: "0 -16px",
-      padding: "20px 16px 150px",
-      minHeight: "calc(100vh - 190px)",
+      background: "var(--s0)",
+      color: "var(--fg)",
+      borderRadius: "30px 30px 0 0",
+      margin: "0 -14px",
+      padding: "16px 14px 110px",
+      minHeight: "calc(100vh - 165px)",
       boxSizing: "border-box",
     };
 
@@ -1715,13 +1751,13 @@ export default function App() {
       const c = chats.find((x) => x.id === openChat);
       return (
         <div style={{ ...panel, marginTop: 8, display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
             <button
               onClick={() => setOpenChat(null)}
               style={{
-                width: 40,
-                height: 40,
-                borderRadius: 14,
+                width: 30,
+                height: 30,
+                borderRadius: 10,
                 background: "rgba(255,255,255,0.12)",
                 border: "none",
                 color: "#fff",
@@ -1731,25 +1767,26 @@ export default function App() {
                 justifyContent: "center",
               }}
             >
-              <ChevronLeft size={22} />
+              <ChevronLeft size={18} />
             </button>
             <div
               style={{
-                width: 40,
-                height: 40,
+                width: 30,
+                height: 30,
                 borderRadius: "50%",
                 background: c.color,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontWeight: 800,
+                fontSize: 13,
               }}
             >
               {c.name[0]}
             </div>
-            <div style={{ fontSize: 18, fontWeight: 700 }}>{c.name}</div>
+            <div style={{ fontSize: 15, fontWeight: 700 }}>{c.name}</div>
           </div>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
             {c.messages.map((m, i) => (
               <div
                 key={i}
@@ -1757,18 +1794,18 @@ export default function App() {
                   alignSelf: m.me ? "flex-end" : "flex-start",
                   maxWidth: "80%",
                   background: m.me ? BLUE : "var(--bub)",
-                  borderRadius: m.me ? "18px 18px 4px 18px" : "18px 18px 18px 4px",
-                  padding: "10px 14px",
+                  borderRadius: m.me ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+                  padding: "7px 11px",
                   animation: "pop .25s ease both",
                 }}
               >
                 {!m.me && (
-                  <div style={{ fontSize: 11, color: "#b4bde6", marginBottom: 2 }}>{m.who}</div>
+                  <div style={{ fontSize: 10, color: "#b4bde6", marginBottom: 2 }}>{m.who}</div>
                 )}
-                <div style={{ fontSize: 15 }}>{m.text}</div>
+                <div style={{ fontSize: 13.5 }}>{m.text}</div>
                 <div
                   style={{
-                    fontSize: 10,
+                    fontSize: 9,
                     color: "rgba(255,255,255,0.6)",
                     textAlign: "right",
                     marginTop: 3,
@@ -1783,13 +1820,13 @@ export default function App() {
           <div
             style={{
               position: "fixed",
-              bottom: 104,
+              bottom: 89,
               left: "50%",
               transform: "translateX(-50%)",
               width: "calc(100% - 28px)",
               maxWidth: 392,
               display: "flex",
-              gap: 8,
+              gap: 6,
               zIndex: 45,
             }}
           >
@@ -1800,20 +1837,22 @@ export default function App() {
               placeholder="Сообщение..."
               style={{
                 flex: 1,
+                minWidth: 0,
                 background: "var(--s2)",
                 border: "1px solid var(--line)",
-                borderRadius: 24,
-                padding: "12px 16px",
+                borderRadius: 20,
+                padding: "9px 14px",
                 color: "var(--fg)",
-                fontSize: 15,
+                fontSize: 14,
                 outline: "none",
               }}
             />
             <button
               onClick={sendMessage}
               style={{
-                width: 46,
-                height: 46,
+                width: 38,
+                height: 38,
+                minWidth: 38,
                 borderRadius: "50%",
                 background: BLUE,
                 border: "none",
@@ -1824,7 +1863,7 @@ export default function App() {
                 justifyContent: "center",
               }}
             >
-              <Send size={20} />
+              <Send size={17} />
             </button>
           </div>
         </div>
@@ -1836,16 +1875,17 @@ export default function App() {
         onClick={() => setChatSeg(id)}
         style={{
           flex: 1,
-          height: 52,
-          borderRadius: 16,
+          height: 25,
+          borderRadius: 11,
           border: "none",
           background: chatSeg === id ? "#2c3486" : "transparent",
           color: "#fff",
-          fontSize: 18,
+          fontSize: 13,
           fontWeight: 700,
           cursor: "pointer",
           transition: "background .25s",
           position: "relative",
+          padding: 0,
         }}
       >
         {label}
@@ -1853,10 +1893,10 @@ export default function App() {
           <span
             style={{
               position: "absolute",
-              top: 10,
+              top: 5,
               right: "26%",
-              width: 10,
-              height: 10,
+              width: 7,
+              height: 7,
               borderRadius: "50%",
               background: "#ef4444",
             }}
@@ -1871,9 +1911,9 @@ export default function App() {
           style={{
             display: "flex",
             background: "#171d70",
-            borderRadius: 20,
-            padding: 4,
-            margin: "4px 0 18px",
+            borderRadius: 14,
+            padding: 2,
+            margin: "15px 4px 16px",
             border: "1px solid rgba(255,255,255,0.06)",
           }}
         >
@@ -1888,53 +1928,54 @@ export default function App() {
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-                paddingTop: 50,
+                paddingTop: 43,
                 animation: "fadeIn .4s ease both",
               }}
             >
               {Yoga}
-              <div style={{ fontSize: 23, fontWeight: 800, marginTop: 24 }}>Пока нет публикаций</div>
-              <div style={{ fontSize: 17, marginTop: 14, maxWidth: 300, lineHeight: 1.4 }}>
+              <div style={{ fontSize: 15, fontWeight: 800, marginTop: 22 }}>Пока нет публикаций</div>
+              <div style={{ fontSize: 12.5, marginTop: 7, maxWidth: 260, lineHeight: 1.3 }}>
                 Скоро здесь появятся интересные новости и объявления
               </div>
             </div>
           ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {chats.map((c) => (
                 <div
                   key={c.id}
                   onClick={() => openThread(c.id)}
                   style={{
-                    background: "var(--s2)", color: "var(--fg)",
-                    borderRadius: 20,
+                    background: "var(--s2)",
+                    color: "var(--fg)",
+                    borderRadius: 16,
                     display: "flex",
                     alignItems: "center",
-                    gap: 12,
+                    gap: 10,
                     cursor: "pointer",
-                    padding: 14,
+                    padding: 10,
                   }}
                 >
                   <div
                     style={{
-                      width: 48,
-                      height: 48,
+                      width: 34,
+                      height: 34,
                       borderRadius: "50%",
                       background: c.color,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       fontWeight: 800,
-                      fontSize: 20,
+                      fontSize: 14,
                       flexShrink: 0,
                     }}
                   >
                     {c.name[0]}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 700, fontSize: 16 }}>{c.name}</div>
+                    <div style={{ fontWeight: 700, fontSize: 13.5 }}>{c.name}</div>
                     <div
                       style={{
-                        fontSize: 13,
+                        fontSize: 11,
                         color: "var(--mut2)",
                         whiteSpace: "nowrap",
                         overflow: "hidden",
@@ -1949,12 +1990,12 @@ export default function App() {
                       style={{
                         background: BLUE,
                         borderRadius: 999,
-                        minWidth: 24,
-                        height: 24,
+                        minWidth: 18,
+                        height: 18,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: 800,
                       }}
                     >
@@ -1990,49 +2031,50 @@ export default function App() {
         key={dateKey(d)}
         ref={isToday ? todayRef : null}
         style={{
-          background: "var(--s2)", color: "var(--fg)",
-          borderRadius: 34,
-          padding: "26px 16px 16px",
+          background: "var(--s2)",
+          color: "var(--fg)",
+          borderRadius: 30,
+          padding: "17px 11px 14px",
           position: "relative",
           overflow: "hidden",
-          scrollMarginTop: 100,
+          scrollMarginTop: 108,
         }}
       >
-        <div style={{ position: "relative", padding: "0 8px" }}>
-          <div style={{ fontSize: 30, fontWeight: 800 }}>
+        <div style={{ position: "relative", padding: "0 11px" }}>
+          <div style={{ fontSize: 17, fontWeight: 800 }}>
             {fmtDate(d)}{" "}
             {isToday && !empty && <span style={{ color: BLUE }}>Сегодня</span>}
           </div>
           {!empty && (
             <>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 7 }}>
                 <div
                   style={{
-                    width: 38,
-                    height: 38,
-                    borderRadius: 10,
+                    width: 17,
+                    height: 17,
+                    borderRadius: 5,
                     background: "#e4e0ff",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <ListChecks size={22} color="#6a5de0" />
+                  <ListChecks size={12} color="#6a5de0" />
                 </div>
-                <span style={{ fontSize: 24, fontWeight: 600 }}>
+                <span style={{ fontSize: 14, fontWeight: 600 }}>
                   {done}/{withHw.length}{" "}
-                  <span style={{ fontSize: 18, color: "var(--mut)", fontWeight: 400 }}>
+                  <span style={{ fontSize: 11.5, color: "var(--mut)", fontWeight: 400 }}>
                     ДЗ на {isToday ? "сегодня" : "день"}
                   </span>
                 </span>
-                <Share size={22} color="#c3c6cf" />
+                <Share size={16} color="#c3c6cf" />
               </div>
               <div
                 style={{
-                  height: 26,
+                  height: 8,
                   borderRadius: 999,
                   background: "var(--s5)",
-                  margin: "16px 0 14px",
+                  margin: "9px 0 8px",
                   overflow: "hidden",
                 }}
               >
@@ -2050,7 +2092,7 @@ export default function App() {
           )}
         </div>
         {empty && emptyDay(info)}
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
           {lessons.map((l) => {
             const k = keyOf(l);
             const open = !!expanded[k];
@@ -2059,9 +2101,10 @@ export default function App() {
               <div
                 key={l.id}
                 style={{
-                  background: "var(--s4)", color: "var(--fg)",
-                  borderRadius: 22,
-                  padding: "14px 16px",
+                  background: "var(--s4)",
+                  color: "var(--fg)",
+                  borderRadius: 16,
+                  padding: "11px 11px",
                   opacity: dn ? 0.75 : 1,
                   transition: "opacity .3s",
                 }}
@@ -2076,11 +2119,13 @@ export default function App() {
                   }}
                 >
                   <div>
-                    <div style={{ fontSize: 20, fontWeight: 800 }}>{l.subject}</div>
-                    <div style={{ fontSize: 17, color: "var(--mut)", marginTop: 2 }}>{l.time}</div>
+                    <div style={{ fontSize: 14.5, fontWeight: 800, lineHeight: 1.2 }}>{l.subject}</div>
+                    <div style={{ fontSize: 12.5, color: "var(--mut)", marginTop: 1, lineHeight: 1.2 }}>
+                      {l.time}
+                    </div>
                   </div>
                   <ChevronRight
-                    size={22}
+                    size={18}
                     color={BLUE}
                     style={{
                       transform: open ? "rotate(90deg)" : "none",
@@ -2092,19 +2137,20 @@ export default function App() {
                   <div
                     style={{
                       background: "#4d6385",
-                      borderRadius: 20,
-                      minHeight: 52,
-                      padding: "8px 12px",
-                      marginTop: 10,
+                      borderRadius: 13,
+                      minHeight: 43,
+                      padding: "6px 7px 6px 12px",
+                      marginTop: 7.5,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
-                      gap: 10,
+                      gap: 8,
+                      boxSizing: "border-box",
                     }}
                   >
                     <span
                       style={{
-                        fontSize: 16,
+                        fontSize: 12.5,
                         color: "#dbe3f2",
                         textDecoration: dn ? "line-through" : "none",
                       }}
@@ -2114,12 +2160,13 @@ export default function App() {
                     <button
                       onClick={() => toggleL(d, l)}
                       style={{
-                        width: 36,
-                        height: 36,
-                        minWidth: 36,
+                        width: 21,
+                        height: 21,
+                        minWidth: 21,
                         borderRadius: "50%",
                         background: dn ? "#22c55e" : "#2f3b4e",
                         border: "none",
+                        padding: 0,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -2127,7 +2174,7 @@ export default function App() {
                         transition: "background .3s",
                       }}
                     >
-                      <Check size={20} color={dn ? "#fff" : "#7f8a9c"} />
+                      <Check size={13} color={dn ? "#fff" : "#7f8a9c"} />
                     </button>
                   </div>
                 )}
@@ -2140,7 +2187,15 @@ export default function App() {
   };
 
   const DiaryTab = (
-    <div style={{ display: "flex", flexDirection: "column", gap: 22, paddingBottom: 220 }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 22,
+        paddingBottom: 170,
+        margin: "0 -8px",
+      }}
+    >
       {diaryDays.map(dayCard)}
     </div>
   );
@@ -3232,6 +3287,7 @@ export default function App() {
   const darkNav = tab === "chat" || tab === "grades" || tab === "profile";
   const activeId = { editor: "profile", rating: "home" }[tab] || tab;
   const isProfile = tab === "profile";
+  const pagePad = tab === "home" || tab === "chat" || tab === "diary" ? 14 : 16;
 
   const screens = {
     home: HomeTab,
@@ -3241,6 +3297,23 @@ export default function App() {
     profile: ProfileTab,
     editor: EditorTab,
     rating: RatingTab,
+  };
+
+  const floatBtn = {
+    position: "fixed",
+    bottom: 89,
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "calc(100% - 28px)",
+    maxWidth: 392,
+    height: 42,
+    borderRadius: 16,
+    border: "none",
+    color: "#fff",
+    fontSize: 15,
+    fontWeight: 600,
+    cursor: "pointer",
+    zIndex: 45,
   };
 
   return (
@@ -3273,7 +3346,7 @@ export default function App() {
             ? "var(--s1)"
             : "linear-gradient(180deg, #1c2486 0%, #2a2fa3 45%, #262a96 100%)",
           boxSizing: "border-box",
-          overflowX: "hidden",
+          overflowX: "clip",
         }}
       >
         {!isProfile && (
@@ -3283,9 +3356,9 @@ export default function App() {
               top: 0,
               zIndex: 40,
               background: "#1c2486",
-              padding: "16px 16px 14px",
+              padding: `calc(env(safe-area-inset-top, 0px) + 9px) ${pagePad}px 7px`,
               display: "flex",
-              gap: 12,
+              gap: 8,
               alignItems: "center",
             }}
           >
@@ -3294,56 +3367,61 @@ export default function App() {
               style={{
                 position: "relative",
                 background: "rgba(255,255,255,0.12)",
-                borderRadius: 18,
-                padding: "10px 14px 10px 10px",
+                borderRadius: 11,
+                padding: "0 10px 0 7px",
+                height: 39,
+                boxSizing: "border-box",
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
+                gap: 8,
                 minWidth: 0,
-                maxWidth: 220,
+                maxWidth: 200,
                 cursor: "pointer",
               }}
             >
-              {avatarImg(40)}
+              {avatarImg(25)}
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>{profile.name}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.15 }}>{profile.name}</div>
                 <div
                   style={{
-                    fontSize: 13,
+                    fontSize: 9.5,
                     color: "#b4bde6",
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    maxWidth: 140,
+                    maxWidth: 80,
+                    marginTop: 1,
                   }}
                 >
                   {profile.className}
                 </div>
               </div>
-              <Dot style={{ top: -4, right: -4, border: "none", width: 12, height: 12 }} />
+              <Dot style={{ top: -2, right: -2, border: "none", width: 8, height: 8 }} />
             </div>
             <div
               onClick={() => setTab("editor")}
               style={{
-                background: "rgba(255,255,255,0.12)",
-                borderRadius: 18,
-                padding: "12px 18px 12px 14px",
+                background: "rgba(255,255,255,0.07)",
+                borderRadius: 11,
+                height: 39,
+                padding: "0 12px 0 9px",
+                boxSizing: "border-box",
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                fontSize: 18,
+                fontSize: 13,
                 whiteSpace: "nowrap",
                 cursor: "pointer",
               }}
             >
-              <PlusCircle size={26} strokeWidth={1.8} /> Ребенок
+              <PlusCircle size={21} strokeWidth={1.7} /> Ребенок
             </div>
           </div>
         )}
 
         <div
           key={tab + (openChat || "")}
-          style={{ padding: "0 16px", animation: "fadeIn .3s ease both" }}
+          style={{ padding: `0 ${pagePad}px`, animation: "fadeIn .3s ease both" }}
         >
           {screens[tab]}
         </div>
@@ -3352,49 +3430,23 @@ export default function App() {
           <button
             onClick={handleSave}
             style={{
-              position: "fixed",
-              bottom: 104,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "calc(100% - 28px)",
-              maxWidth: 392,
-              height: 64,
-              borderRadius: 28,
-              border: "none",
+              ...floatBtn,
               background: "linear-gradient(90deg,#1e6bff,#4d9bff)",
-              color: "#fff",
-              fontSize: 22,
-              fontWeight: 700,
-              cursor: "pointer",
-              zIndex: 45,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: 10,
+              gap: 8,
             }}
           >
-            <Save size={22} /> Сохранить изменения
+            <Save size={17} /> Сохранить изменения
           </button>
         )}
         {tab === "grades" && (
           <button
             onClick={() => alert(`Средний балл: ${avg}`)}
             style={{
-              position: "fixed",
-              bottom: 104,
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "calc(100% - 28px)",
-              maxWidth: 392,
-              height: 64,
-              borderRadius: 28,
-              border: "none",
+              ...floatBtn,
               background: "linear-gradient(90deg,#1e6bff,#4d9bff)",
-              color: "#fff",
-              fontSize: 22,
-              fontWeight: 700,
-              cursor: "pointer",
-              zIndex: 45,
             }}
           >
             Узнать оценки
@@ -3409,28 +3461,28 @@ export default function App() {
                 }
                 style={{
                   position: "fixed",
-                  top: 92,
+                  top: 112,
                   left: "50%",
                   transform: "translateX(-50%)",
                   zIndex: 45,
                   background: "var(--s2)",
-                  border: "1.5px solid var(--line)",
+                  border: "1px solid var(--line)",
                   borderRadius: 999,
                   color: "var(--fg)",
-                  fontSize: 18,
+                  fontSize: 13,
                   fontWeight: 600,
-                  padding: "10px 24px 10px 14px",
+                  padding: "6px 16px 6px 8px",
                   display: "flex",
                   alignItems: "center",
-                  gap: 12,
+                  gap: 8,
                   cursor: "pointer",
                   animation: "fadeIn .25s ease both",
                 }}
               >
                 <span
                   style={{
-                    width: 30,
-                    height: 30,
+                    width: 22,
+                    height: 22,
                     borderRadius: "50%",
                     background: BLUE,
                     display: "flex",
@@ -3438,7 +3490,7 @@ export default function App() {
                     justifyContent: "center",
                   }}
                 >
-                  <ChevronDown size={20} />
+                  <ChevronDown size={15} />
                 </span>
                 К сегодняшнему дню
               </button>
@@ -3446,21 +3498,8 @@ export default function App() {
             <button
               onClick={() => setTab("grades")}
               style={{
-                position: "fixed",
-                bottom: 104,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "calc(100% - 28px)",
-                maxWidth: 392,
-                height: 64,
-                borderRadius: 28,
-                border: "none",
+                ...floatBtn,
                 background: "#6f9bff",
-                color: "#fff",
-                fontSize: 22,
-                fontWeight: 700,
-                cursor: "pointer",
-                zIndex: 45,
               }}
             >
               Узнать ДЗ и оценки
@@ -3471,20 +3510,19 @@ export default function App() {
         <div
           style={{
             position: "fixed",
-            bottom: 14,
+            bottom: 19,
             left: "50%",
             transform: "translateX(-50%)",
-            width: "calc(100% - 28px)",
-            maxWidth: 392,
-            height: 78,
+            width: "calc(100% - 38px)",
+            maxWidth: 382,
+            height: 54,
             background: darkNav ? "var(--nav)" : "rgba(24,30,110,0.92)",
             backdropFilter: "blur(10px)",
-            border: darkNav ? "2px solid var(--line)" : "2px solid #2f4bd8",
-            borderRadius: 40,
+            border: darkNav ? "1.5px solid var(--line)" : "1.5px solid #2f4bd8",
+            borderRadius: 30,
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-around",
-            padding: "0 8px",
+            padding: "0 6px",
             boxSizing: "border-box",
             zIndex: 50,
           }}
@@ -3500,31 +3538,46 @@ export default function App() {
                 }}
                 style={{
                   position: "relative",
-                  width: active ? 100 : 60,
-                  height: 62,
-                  borderRadius: 32,
-                  background: active
-                    ? darkNav
-                      ? "var(--navact)"
-                      : "rgba(255,255,255,0.12)"
-                    : "transparent",
+                  flex: 1,
+                  height: 48,
+                  padding: 0,
+                  background: "transparent",
                   border: "none",
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  transition: "width .3s, background .3s",
                 }}
               >
-                <t.icon size={34} strokeWidth={1.6} color={active ? BLUE : "#8f9fd0"} />
+                <span
+                  style={{
+                    position: "absolute",
+                    left: "50%",
+                    top: 0,
+                    width: 76,
+                    height: 48,
+                    marginLeft: -38,
+                    borderRadius: 24,
+                    background: darkNav ? "var(--navact)" : "rgba(255,255,255,0.12)",
+                    opacity: active ? 1 : 0,
+                    transform: active ? "scale(1)" : "scale(0.6)",
+                    transition: "transform .3s, opacity .3s",
+                  }}
+                />
+                <t.icon
+                  size={30}
+                  strokeWidth={1.5}
+                  color={active ? BLUE : "#8f9fd0"}
+                  style={{ position: "relative" }}
+                />
                 {t.dot && (
                   <span
                     style={{
                       position: "absolute",
-                      top: 8,
-                      right: active ? 30 : 8,
-                      width: 12,
-                      height: 12,
+                      top: 9,
+                      left: "calc(50% + 8px)",
+                      width: 8,
+                      height: 8,
                       borderRadius: "50%",
                       background: t.dot,
                     }}
