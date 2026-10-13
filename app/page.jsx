@@ -670,137 +670,317 @@ export default function App() {
   /* ---------- вход / регистрация ---------- */
   if (!user) {
     const reg = authMode === "register";
-    const af = {
+    const setF = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+    const BG = "#171729";
+    const underline = {
       width: "100%",
-      height: 54,
-      borderRadius: 16,
-      border: "1.5px solid rgba(160,175,255,0.35)",
-      background: "rgba(255,255,255,0.08)",
+      height: 52,
+      background: "transparent",
+      border: "none",
+      borderBottom: "1.5px solid #8e97bd",
+      borderRadius: 0,
       color: "#fff",
-      fontSize: 17,
-      padding: "0 16px",
+      fontSize: 20,
+      padding: "0 2px",
       boxSizing: "border-box",
       outline: "none",
       fontFamily: font,
     };
-    const setF = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+    const skin = "#c58f6a";
+
     return (
       <div
         style={{
           minHeight: "100vh",
           display: "flex",
           justifyContent: "center",
-          background: "#05080f",
+          background: BG,
           color: "#fff",
           fontFamily: font,
         }}
       >
+        <style>{`
+          .em-in::placeholder { color: #7d8197; opacity: 1; }
+          .em-in:focus { border-bottom-color: #4d9bff !important; }
+          .em-in:-webkit-autofill {
+            -webkit-text-fill-color: #fff;
+            -webkit-box-shadow: 0 0 0 1000px ${BG} inset;
+          }
+        `}</style>
+
         <div
           style={{
+            position: "relative",
             width: "100%",
             maxWidth: 420,
             minHeight: "100vh",
-            background: "linear-gradient(180deg, #1c2486 0%, #2a2fa3 45%, #262a96 100%)",
-            padding: "70px 24px 40px",
+            background: BG,
+            overflow: "hidden",
             boxSizing: "border-box",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
           }}
         >
-          <svg width="84" height="70" viewBox="0 0 100 76" fill="none">
-            <circle cx="50" cy="22" r="9" fill="#FFEB3B" />
-            <path d="M10 42C10 39.8 11.8 38 14 38H48V72H14C11.8 72 10 70.2 10 68V42Z" fill="white" stroke="#1A237E" strokeWidth="2" />
-            <path d="M90 42C90 39.8 88.2 38 86 38H52V72H86C88.2 72 90 70.2 90 68V42Z" fill="white" stroke="#1A237E" strokeWidth="2" />
-            <text x="50" y="63" textAnchor="middle" fill="#1A237E" fontSize="32" fontWeight="bold" fontFamily="Arial">e</text>
-          </svg>
-          <h1 style={{ fontSize: 32, fontWeight: 800, margin: "12px 0 6px" }}>emaktab</h1>
-          <div style={{ fontSize: 16, color: "#b4bde6", marginBottom: 26 }}>
-            {reg ? "Создайте аккаунт" : "Войдите в аккаунт"}
-          </div>
+          {/* иллюстрация внизу */}
+          <svg
+            viewBox="0 0 420 324"
+            style={{
+              position: "absolute",
+              left: 0,
+              bottom: 0,
+              width: "100%",
+              height: "auto",
+              display: "block",
+              pointerEvents: "none",
+            }}
+          >
+            <path d="M0 232 Q90 196 180 206 Q300 222 420 244 L420 324 L0 324 Z" fill="#1d3a10" />
+            {/* дерево */}
+            <ellipse cx="22" cy="96" rx="62" ry="84" fill="#3c4a22" />
+            <path d="M22 24 L27 228" stroke="#2f3a18" strokeWidth="5" strokeLinecap="round" />
+            <path
+              d="M22 130 L-4 68 M24 160 L72 92 M22 190 L-10 150 M25 194 L64 150"
+              stroke="#2f3a18"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
+            <ellipse cx="29" cy="232" rx="17" ry="4" fill="#2a3512" />
+            <path d="M0 282 Q90 250 200 262 Q320 276 420 262 L420 324 L0 324 Z" fill="#38572a" />
 
-          <div style={{ display: "flex", background: "#171d70", borderRadius: 18, padding: 4, width: "100%", marginBottom: 20 }}>
-            {[["login", "Вход"], ["register", "Регистрация"]].map(([id, l]) => (
-              <button
-                key={id}
-                onClick={() => {
-                  setAuthMode(id);
-                  setAuthErr("");
-                }}
+            {/* стоящая девушка */}
+            <path d="M172 196 L202 196 L210 280 L198 281 L188 224 L182 284 L169 284 Z" fill="#5577d4" />
+            <ellipse cx="174" cy="288" rx="10" ry="3" fill="#2d2020" />
+            <ellipse cx="204" cy="285" rx="10" ry="3" fill="#2d2020" />
+            <path d="M172 134 Q172 112 190 112 Q206 114 205 134 Q205 152 196 160 L174 160 Q168 148 172 134 Z" fill="#8a5a3c" />
+            <path d="M163 166 Q168 154 186 152 Q206 154 212 168 L208 200 Q186 208 168 200 Z" fill="#a3402f" />
+            <path d="M166 172 Q158 190 160 200 Q166 204 172 198 Z" fill={skin} />
+            <ellipse cx="190" cy="136" rx="10" ry="12" fill={skin} />
+            <rect x="187" y="162" width="32" height="27" rx="4" fill="#2f3558" transform="rotate(-6 203 175)" />
+            <circle cx="206" cy="193" r="5" fill={skin} />
+
+            {/* сидящая девушка */}
+            <path d="M288 270 L322 282 L336 280 L338 285 L318 288 L290 281 Z" fill={skin} />
+            <ellipse cx="337" cy="285" rx="6" ry="2.5" fill="#2d2020" />
+            <path d="M246 262 Q250 284 270 285 Q290 284 292 262 Z" fill="#5b6b84" />
+            <path d="M258 188 Q260 178 270 178 Q282 180 282 192 L284 232 L258 232 Z" fill="#6b4228" />
+            <path d="M246 234 Q250 220 270 220 Q292 222 296 236 L292 264 L250 264 Z" fill="#c9a13a" />
+            <path d="M262 224 L280 224 L278 262 L264 262 Z" fill="#efefef" />
+            <ellipse cx="270" cy="192" rx="9" ry="11" fill={skin} />
+            <rect x="266" y="242" width="7" height="14" rx="2" fill="#3a2418" />
+
+            {/* сидящий парень */}
+            <path d="M356 262 L392 262 L394 296 L384 298 L374 280 L350 286 L326 280 L330 270 Z" fill="#4a6ad0" />
+            <ellipse cx="327" cy="283" rx="7" ry="3" fill="#4a2c1c" />
+            <ellipse cx="382" cy="301" rx="8" ry="3" fill="#4a2c1c" />
+            <path d="M348 232 Q360 222 380 228 L396 262 L352 262 Z" fill="#eeeeee" />
+            <path d="M358 232 L356 262 M385 232 L388 258" stroke="#3a2418" strokeWidth="3" />
+            <ellipse cx="366" cy="212" rx="9" ry="11" fill={skin} />
+            <path d="M356 210 Q358 196 372 198 Q381 202 377 212 Q368 204 358 214 Z" fill="#3a2417" />
+            <ellipse cx="338" cy="270" rx="5" ry="4" fill="#5a3a28" />
+          </svg>
+
+          {/* контент */}
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              padding: "0 26px 40px",
+              boxSizing: "border-box",
+            }}
+          >
+            {/* логотип */}
+            <div
+              style={{
+                marginTop: "15vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 10,
+              }}
+            >
+              <svg width="48" height="72" viewBox="0 0 48 72" fill="none">
+                {[-64, -42, -21, 0, 21, 42, 64].map((deg) => (
+                  <line
+                    key={deg}
+                    x1="24"
+                    y1="17"
+                    x2="24"
+                    y2="8"
+                    stroke="#fff"
+                    strokeWidth="2.6"
+                    strokeLinecap="round"
+                    transform={`rotate(${deg} 24 33)`}
+                  />
+                ))}
+                <path d="M13 33 A11 11 0 0 1 35 33 Z" fill="#f0f81c" />
+                <path
+                  d="M3 30 H14 Q21 30 24 38 Q27 30 34 30 H45 V62 H34 Q27 62 24 69 Q21 62 14 62 H3 Z"
+                  stroke="#fff"
+                  strokeWidth="3.4"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+                <text
+                  x="24"
+                  y="55"
+                  textAnchor="middle"
+                  fill="#fff"
+                  fontSize="26"
+                  fontStyle="italic"
+                  fontWeight="700"
+                  fontFamily="Georgia, serif"
+                >
+                  e
+                </text>
+              </svg>
+              <div
                 style={{
-                  flex: 1,
-                  height: 46,
-                  borderRadius: 14,
-                  border: "none",
-                  background: authMode === id ? "#2c3486" : "transparent",
-                  color: "#fff",
-                  fontSize: 16,
+                  fontFamily:
+                    '"Baloo 2","Fredoka","Nunito","Arial Rounded MT Bold","Trebuchet MS",sans-serif',
+                  fontSize: 64,
                   fontWeight: 700,
-                  cursor: "pointer",
+                  lineHeight: 1,
+                  letterSpacing: 1,
+                  marginTop: 4,
                 }}
               >
-                {l}
-              </button>
-            ))}
-          </div>
+                maktab
+              </div>
+            </div>
 
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              submitAuth();
-            }}
-            style={{ width: "100%", display: "flex", flexDirection: "column", gap: 12 }}
-          >
-            {reg && (
+            {/* форма */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                submitAuth();
+              }}
+              style={{ marginTop: 60 }}
+            >
+              {reg && (
+                <>
+                  <input
+                    className="em-in"
+                    style={underline}
+                    placeholder="Имя и фамилия"
+                    value={form.fullName}
+                    onChange={setF("fullName")}
+                  />
+                  <input
+                    className="em-in"
+                    style={{ ...underline, marginTop: 8 }}
+                    placeholder="Класс (необязательно)"
+                    value={form.className}
+                    onChange={setF("className")}
+                  />
+                </>
+              )}
+              <input
+                className="em-in"
+                style={{ ...underline, marginTop: reg ? 8 : 0 }}
+                placeholder="Логин"
+                autoCapitalize="none"
+                autoComplete="username"
+                value={form.login}
+                onChange={setF("login")}
+              />
+              <input
+                className="em-in"
+                style={{ ...underline, marginTop: 8 }}
+                type="password"
+                placeholder="Пароль"
+                autoComplete={reg ? "new-password" : "current-password"}
+                value={form.pass}
+                onChange={setF("pass")}
+              />
+
+              {authErr && (
+                <div style={{ color: "#ff7b7b", fontSize: 14, textAlign: "center", marginTop: 14 }}>
+                  {authErr}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                style={{
+                  marginTop: 30,
+                  width: "100%",
+                  height: 46,
+                  borderRadius: 24,
+                  border: "none",
+                  background: "linear-gradient(90deg,#0a7aff,#4d9bff)",
+                  color: "#fff",
+                  fontSize: 18,
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  fontFamily: font,
+                }}
+              >
+                {reg ? "Зарегистрироваться" : "Войти"}
+              </button>
+            </form>
+
+            {!reg && (
               <>
-                <input style={af} placeholder="Имя и фамилия" value={form.fullName} onChange={setF("fullName")} />
-                <input style={af} placeholder="Класс (необязательно)" value={form.className} onChange={setF("className")} />
+                <div
+                  onClick={() =>
+                    alert(
+                      "Данные хранятся на этом устройстве. Если забыли пароль, создайте новый аккаунт.",
+                    )
+                  }
+                  style={{
+                    textAlign: "center",
+                    color: "#1a85ff",
+                    fontSize: 18,
+                    marginTop: 24,
+                    cursor: "pointer",
+                  }}
+                >
+                  Забыли логин или пароль?
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => alert("Вход по QR-коду пока недоступен")}
+                  style={{
+                    marginTop: 40,
+                    width: "100%",
+                    height: 50,
+                    borderRadius: 16,
+                    border: "1.5px solid #3b3b52",
+                    background: "transparent",
+                    color: "#1a85ff",
+                    fontSize: 18,
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 10,
+                    fontFamily: font,
+                  }}
+                >
+                  <QrCode size={26} strokeWidth={1.8} /> Войти по QR-коду
+                </button>
               </>
             )}
-            <input
-              style={af}
-              placeholder="Логин"
-              autoCapitalize="none"
-              autoComplete="username"
-              value={form.login}
-              onChange={setF("login")}
-            />
-            <input
-              style={af}
-              type="password"
-              placeholder="Пароль"
-              autoComplete={reg ? "new-password" : "current-password"}
-              value={form.pass}
-              onChange={setF("pass")}
-            />
-            {authErr && (
-              <div style={{ color: "#ff8a8a", fontSize: 14, textAlign: "center" }}>{authErr}</div>
-            )}
-            <button
-              type="submit"
+
+            <div
+              onClick={() => {
+                setAuthMode(reg ? "login" : "register");
+                setAuthErr("");
+              }}
               style={{
-                marginTop: 8,
-                height: 58,
-                borderRadius: 20,
-                border: "none",
-                background: "linear-gradient(90deg,#1e6bff,#4d9bff)",
-                color: "#fff",
-                fontSize: 20,
-                fontWeight: 700,
+                textAlign: "center",
+                color: "#1a85ff",
+                fontSize: 16,
+                marginTop: reg ? 24 : 22,
                 cursor: "pointer",
               }}
             >
-              {reg ? "Создать аккаунт" : "Войти"}
-            </button>
-          </form>
-          <div style={{ fontSize: 12, color: "#8f9fd0", marginTop: 22, textAlign: "center", lineHeight: 1.4 }}>
-            Данные хранятся на этом устройстве, в браузере.
+              {reg ? "Уже есть аккаунт? Войти" : "Нет аккаунта? Регистрация"}
+            </div>
           </div>
         </div>
       </div>
     );
   }
-
   /* ---------- общие куски ---------- */
   const realToday = new Date();
   const realTodayD = new Date(realToday.getFullYear(), realToday.getMonth(), realToday.getDate());
